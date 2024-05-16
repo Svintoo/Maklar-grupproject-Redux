@@ -30,14 +30,14 @@ function FastighetsCard() {
           <MdArrowForwardIos />
         </button>
       </div>
+
       <div className="box">
-        <header>
-          <h4>VattenVägen1</h4>
-          <small>1 145 000 kr</small>
+        <header className="card-fastighets">
+          <h2>Vattenvägen1</h2>
+          <p className="sub-title">valsta, sigtuna kommun</p>
+          <p>1 145 000 kr</p>
         </header>
-        <div className="sub-title">
-          <p>valsta, sigtuna kommun</p>
-        </div>
+
         <div className="area">
           <p>105+55 m²</p>
           <p>3 rum</p>
