@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Italianno&family=Roboto&display=swap');
+
+
+footer{
+    
+}
+
+section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1px;
+    background-color: #f0f0f0;
+    color: black;
+    margin-top: auto;
+    
+}
+.footer-section {
+
+    text-align: left;
+    padding: 0.3em;
+}
+
+h3 {
+    font-size: 15px;
+
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0.2em;
+
+    margin: 0;
+}
+
+li {
+    margin-bottom: 3px;
+    font-size: 12px;
+    margin: 0;
+}
+
+p{
+    margin: 0;
+}
+
+.bostadsfynd{
+    font-size: 1.2em;
+    /* font-family: "Itallianno" ; */
+}
+
+.copyrhight{
+    color: #f0f0f0;
+    background-color: black;
+    font-size: 10px;
+    text-align: center;
+}
