@@ -1,9 +1,10 @@
 import "./footer.css";
+import { FaFacebook, FaInstagram, FaTwitterSquare} from "react-icons/fa";
 
 function footer() {
     return (
         <>
-         <footer>
+            <footer>
     <section>
     <div className="footer-section">
         <h3 className="bostadsfynd" >Bostadsfynd</h3>
@@ -23,17 +24,19 @@ function footer() {
         <h3>Quick Link</h3>
         {/* byta ut till länkar? */}
         <ul>
-            <li>Home</li>  
-            <li>About</li>
-            <li>Tours</li>
-            <li>Contact</li>
+            <li><span className="hover"> Home </span></li>  
+            <li><span className="hover">About </span></li>
+            <li><span className="hover">Tours </span></li>
+            <li><span className="hover">Contact </span></li>
         </ul>
     </div>
     <div className="footer-section">
         <h3>Follow Us</h3>
-        <p>Insta</p>
-        <p>Facebook</p>
-        <p>twitter</p>
+        <div className="followUsIcon">
+        <p className="hover"><FaFacebook /></p>
+        <p className="hover"><FaInstagram /></p>
+        <p className="hover"><FaTwitterSquare /></p>
+        </div>
     </div>
     </section>
     <div className="copyrhight"> Copyright © All rights reserved (Bostadsfynd) 2024 

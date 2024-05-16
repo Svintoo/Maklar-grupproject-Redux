@@ -1,15 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Italianno&family=Roboto&display=swap');
 
-
-footer{
-    
-}
 
 section {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1px;
-    background-color: #f0f0f0;
     color: black;
     margin-top: auto;
     
@@ -18,24 +12,23 @@ section {
 
     text-align: left;
     padding: 0.3em;
+    margin: 1rem;
 }
 
 h3 {
-    font-size: 15px;
-
+    font-size: 0.9rem;
     margin: 0;
 }
 
 ul {
     list-style-type: none;
     padding: 0.2em;
-
     margin: 0;
 }
 
 li {
-    margin-bottom: 3px;
-    font-size: 12px;
+    margin-bottom: 0.34rem;
+    font-size: 0.8rem;
     margin: 0;
 }
 
@@ -48,9 +41,18 @@ p{
     /* font-family: "Itallianno" ; */
 }
 
+.followUsIcon{
+    display: flex;
+    gap:0.6rem;
+    margin:0.4rem;
+}
+.hover:hover{
+    cursor: pointer;
+}
+
 .copyrhight{
-    color: #f0f0f0;
+    color: #ffffff;
     background-color: black;
-    font-size: 10px;
+    font-size: 0.8rem;
     text-align: center;
 }
