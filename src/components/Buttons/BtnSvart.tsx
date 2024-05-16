@@ -2,7 +2,7 @@ import React from "react";
 import "./Button.css";
 
 interface BtnSvartProps {
-  onClick: () => void;
+  onClick?: () => void;
   title: string;
 }
 
