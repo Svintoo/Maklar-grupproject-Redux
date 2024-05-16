@@ -1,0 +1,58 @@
+
+
+section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1px;
+    color: black;
+    margin-top: auto;
+    
+}
+.footer-section {
+
+    text-align: left;
+    padding: 0.3em;
+    margin: 1rem;
+}
+
+h3 {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0.2em;
+    margin: 0;
+}
+
+li {
+    margin-bottom: 0.34rem;
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+p{
+    margin: 0;
+}
+
+.bostadsfynd{
+    font-size: 1.2em;
+    /* font-family: "Itallianno" ; */
+}
+
+.followUsIcon{
+    display: flex;
+    gap:0.6rem;
+    margin:0.4rem;
+}
+.hover:hover{
+    cursor: pointer;
+}
+
+.copyrhight{
+    color: #ffffff;
+    background-color: black;
+    font-size: 0.8rem;
+    text-align: center;
+}
