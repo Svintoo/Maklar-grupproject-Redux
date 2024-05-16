@@ -1,0 +1,54 @@
+/* Header */
+@import url("https://fonts.googleapis.com/css2?family=Italianno&display=swap");
+
+.header_container {
+  background-color: #d5ecf4;
+  box-shadow: 5px 5px 10px #aaaaaa;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+}
+
+.items_container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+.logo {
+  font-family: "Italianno", cursive;
+  font-size: 3rem;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.login_group {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.admin_name_group {
+  display: flex;
+}
+.admin_icon {
+  font-size: 1.8rem;
+}
+.admin_arrow {
+  font-size: 1rem;
+}
+
+/* body {
+  background-image: url("../public/img/e454e7f8-305d-4c84-a547-e66dbc33e828.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 200px;
+} */
+
+/* .headerBackground {
+  width: 100vw;
+  height: 150px;
+} */
