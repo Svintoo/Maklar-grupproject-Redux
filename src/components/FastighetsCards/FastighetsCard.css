@@ -1,0 +1,148 @@
+.cards-wrapper {
+  padding: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  row-gap: 2rem;
+}
+.cards-wrapper-btn {
+  float: right;
+  margin-right: 1rem;
+}
+.card {
+  box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.2);
+  width: 47%;
+  border: 1.5px solid rgb(213, 236, 244);
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  border: 2px solid rgb(156 207 225);
+  /* rotate: -1deg; */
+  scale: 1.03;
+}
+
+.card .box {
+  padding: 0.5rem 0.4rem;
+}
+.arrow-button {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  cursor: pointer;
+  outline: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 5px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow-button svg {
+  color: white;
+  font-size: 1.3rem;
+}
+
+.img-wrapper {
+  position: relative;
+}
+
+.img-wrapper img {
+  max-width: 100%;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.img-wrapper .arrow-button {
+  margin: 0;
+}
+.left-arrow {
+  left: 5px;
+}
+
+.right-arrow {
+  right: 5px;
+}
+
+.card header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card header h4 {
+  text-transform: capitalize;
+}
+
+.card header small {
+  font-size: 0.6rem;
+}
+
+.card .sub-title p {
+  text-transform: capitalize;
+  font-size: 0.8rem;
+  margin: 0.8rem 0;
+}
+
+.card .area {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  margin: 0.8rem 0;
+}
+
+footer.visas {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.2rem 0;
+}
+
+footer.visas small {
+  font-size: 0.6rem;
+}
+
+footer.visas button {
+  margin: 0;
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .card {
+    width: 32%;
+  }
+  .cards-wrapper {
+    padding: 1rem;
+  }
+  .card header small {
+    font-size: 0.8rem;
+  }
+
+  footer.visas small {
+    font-size: 0.8rem;
+  }
+  .cards-wrapper-btn {
+    margin-right: 3rem;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .card {
+    width: 22%;
+  }
+  .cards-wrapper {
+    padding: 2rem;
+  }
+  .card header small {
+    font-size: 0.8rem;
+  }
+
+  footer.visas small {
+    font-size: 0.8rem;
+  }
+  .cards-wrapper-btn {
+    margin-right: 4rem;
+  }
+}
