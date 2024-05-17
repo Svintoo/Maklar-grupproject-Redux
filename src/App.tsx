@@ -5,6 +5,7 @@ import CardsWrapper from "./components/FastighetsCards/CardsWrapper";
 import FastighetsCard from "./components/FastighetsCards/FastighetsCard";
 import Footer from "./components/Footer/Footer";
 
+
 function App() {
   return (
     <>
@@ -21,7 +22,10 @@ function App() {
         <FastighetsCard />
       </CardsWrapper>
       <CardDetails />
+	  
       <Footer />
+
+
     </>
   );
 }
