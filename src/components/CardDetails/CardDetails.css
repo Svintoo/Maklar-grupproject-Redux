@@ -1,0 +1,76 @@
+.card-details {
+  width: 90%;
+  margin: 1.5rem auto;
+}
+
+.card-details .back-btn {
+  margin: 1rem 0;
+}
+
+.details-box .details-header {
+  padding: 0.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  text-transform: capitalize;
+}
+
+.details-box p,
+h4 {
+  padding: 0.7rem;
+}
+.details-box h2 {
+  padding: 0.7rem;
+}
+.box .details-main {
+  text-transform: capitalize;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.box .details-main p {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+.box hr {
+  height: 2px;
+  width: 90%;
+  margin: 1rem auto;
+}
+.kontakt {
+  padding: 0.8rem 1rem;
+  font-size: 1.6rem;
+  font-weight: 900;
+}
+.box .details-footer {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem auto;
+  justify-content: space-around;
+}
+
+@media screen and (min-width: 769px) {
+  .card-details {
+    width: 80%;
+  }
+
+  .card-details .details-header {
+    font-size: 2rem;
+  }
+  .details-main {
+    padding: 0.8rem;
+  }
+  .box .details-main p {
+    font-size: 1.5rem;
+  }
+  .kontakt {
+    padding: 0.8rem 2rem;
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .card-details {
+    width: 60%;
+  }
+}

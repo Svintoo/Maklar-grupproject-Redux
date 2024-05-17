@@ -1,6 +1,6 @@
 import "./Button.css";
 interface BtnMedIconProps {
-  onClick: () => void;
+  onClick?: () => void;
   icon?: React.ReactNode;
   title: string;
 }

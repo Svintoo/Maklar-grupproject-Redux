@@ -6,10 +6,13 @@
   min-width: 8rem;
   text-align: center;
   box-shadow: 0px 2px 10px 0px #838383;
+  font-size: 1.2rem;
+  padding: 0.4rem;
 }
 .icon {
   font-size: 2rem;
 }
+
 .icon-btn .icon {
   padding: 6px;
 }
@@ -29,4 +32,12 @@
   font-weight: 400;
   font-size: 0.7rem;
   /* letter-spacing: 1px; */
+}
+@media screen and (min-width: 769px) {
+  .icon-btn {
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
+}
+@media screen and (min-width: 1025px) {
 }
