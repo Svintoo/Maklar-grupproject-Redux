@@ -18,16 +18,16 @@ function CardsWrapper({ children }: CardsWrapperProps) {
     <>
       <section className="cards-wrapper ">
         {React.Children.toArray(children).slice(0, visibleCards)}
+        <div className="cards-wrapper-btn">
+          {React.Children.count(children) > visibleCards && (
+            <BtnMedIcon
+              icon={<MdExpandMore />}
+              title="Show More"
+              onClick={showMoreCards}
+            />
+          )}
+        </div>
       </section>
-      <div className="cards-wrapper-btn">
-        {React.Children.count(children) > visibleCards && (
-          <BtnMedIcon
-            icon={<MdExpandMore />}
-            title="Show More"
-            onClick={showMoreCards}
-          />
-        )}
-      </div>
     </>
   );
 }

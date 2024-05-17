@@ -69,16 +69,16 @@
 
 .card header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
 }
 
-.card header h4 {
+.card-fastighets {
   text-transform: capitalize;
 }
 
-.card header small {
-  font-size: 0.6rem;
+.card-fastighets p {
+  font-size: 0.8rem;
+  padding: 0.2rem 0;
 }
 
 .card .sub-title p {
@@ -91,14 +91,14 @@
   display: flex;
   justify-content: space-between;
   font-size: 0.8rem;
-  margin: 0.8rem 0;
+  margin: 0.5rem 0;
 }
 
 footer.visas {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0.2rem 0;
+  margin: 0.8rem auto 0.4rem auto;
 }
 
 footer.visas small {
@@ -108,23 +108,31 @@ footer.visas small {
 footer.visas button {
   margin: 0;
 }
+.cards-wrapper-btn {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.cards-wrapper-btn button {
+  padding: 0.4rem;
+  font-size: 1rem;
+}
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) {
   .card {
     width: 32%;
   }
-  .cards-wrapper {
+  /* .cards-wrapper {
     padding: 1rem;
-  }
+  } */
   .card header small {
     font-size: 0.8rem;
   }
-
+  .arrow-button svg {
+    font-size: 1.6rem;
+  }
   footer.visas small {
     font-size: 0.8rem;
-  }
-  .cards-wrapper-btn {
-    margin-right: 3rem;
   }
 }
 
@@ -132,17 +140,14 @@ footer.visas button {
   .card {
     width: 22%;
   }
-  .cards-wrapper {
+  /* .cards-wrapper {
     padding: 2rem;
-  }
+  } */
   .card header small {
     font-size: 0.8rem;
   }
 
   footer.visas small {
     font-size: 0.8rem;
-  }
-  .cards-wrapper-btn {
-    margin-right: 4rem;
   }
 }

@@ -1,0 +1,46 @@
+.mäklare-wrapper {
+  width: 90%;
+  margin: 1rem auto;
+  border-radius: 12px;
+  box-shadow: inset -4px 3px 10px 0px #a1e3e8;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.mäklare-wrapper p,
+h3 {
+  padding: 0.7rem;
+}
+.mäklare-wrapper h3 {
+  text-transform: capitalize;
+  margin-top: 0.5rem;
+  font-size: 1.7rem;
+  letter-spacing: 1px;
+}
+.mäklare-wrapper p {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  /* font-size: 1.2rem; */
+}
+.mäklare-wrapper p span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto 1rem;
+}
+@media screen and (min-width: 769px) {
+  .mäklare-wrapper {
+    padding: 2rem;
+  }
+  .mäklare-wrapper p {
+    font-size: 1.6rem;
+  }
+  .mäklare-wrapper h3 {
+    font-size: 2.2rem;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+}
