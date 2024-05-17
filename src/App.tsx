@@ -12,6 +12,19 @@ function App() {
     <>
       <Header />
       <Hero />
+      <CardsWrapper>
+        <FastighetsCard />
+        <FastighetsCard />
+        <FastighetsCard />
+        <FastighetsCard />
+        <FastighetsCard />
+        <FastighetsCard />
+        <FastighetsCard />
+        <FastighetsCard />
+        <FastighetsCard />
+        <FastighetsCard />
+      </CardsWrapper>
+      <CardDetails />
       <Footer />
     </>
   );
