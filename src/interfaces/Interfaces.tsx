@@ -1,5 +1,7 @@
+import { Mäklare } from "./MäklareInterface";
+
 export interface RealEstate {
-  image: string[];
+  images: string[];
   id?: string | number;
   category: string;
   place: string;
@@ -11,4 +13,5 @@ export interface RealEstate {
   livingArea: string;
   showing: string;
   buildYear: string;
+  agent: Mäklare;
 }
