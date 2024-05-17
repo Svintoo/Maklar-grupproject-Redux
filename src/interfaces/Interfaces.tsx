@@ -1,4 +1,5 @@
-export interface RealEstate  {
+export interface RealEstate {
+  image: string[];
   id: string | number;
   category: string;
   place: string;
