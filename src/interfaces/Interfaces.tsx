@@ -1,11 +1,14 @@
 export interface RealEstate {
   image: string[];
-  id: string | number;
+  id?: string | number;
   category: string;
   place: string;
-  address: string | number;
-  rooms: number;
+  address: string;
+  rooms: string;
   price: number;
-  description: string | number;
-  image_url: string;
+  description?: string;
+  contractType: string;
+  livingArea: string;
+  showing: string;
+  buildYear: string;
 }
