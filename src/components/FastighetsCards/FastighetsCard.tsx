@@ -44,7 +44,7 @@ function FastighetsCard() {
         </div>
         <footer className="visas">
           <small>VISAS:sön 12/5</small>
-          <BtnSvart title="More Details" />
+          <BtnSvart title="Fler Detaljer" />
         </footer>
       </div>
     </article>

@@ -1,0 +1,45 @@
+.add-object-input-wrapper {
+  flex-direction: column;
+  padding: 1rem;
+}
+.add-object-input-wrapper input,
+.add-object-select {
+  padding: 0.7rem;
+  margin: 0.7rem auto;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 1px 3px 3px 0px darkgrey;
+  min-width: 20rem;
+  font-size: 1.2rem;
+}
+.add-object-input-wrapper label {
+  min-width: 20rem;
+  padding: 0.7rem;
+  text-align: left;
+  font-size: 1.2rem;
+}
+.add-object-input-wrapper input:focus-visible {
+  outline: none;
+  box-shadow: inset -4px 3px 10px 0px #a1e3e8 !important;
+}
+/* ------- start (Select) custom style  ----------*/
+.custom-select {
+  padding: 0;
+  margin: 0;
+}
+.custom-select .css-13cymwt-control {
+  border: none;
+  box-shadow: none;
+  padding: 0.3rem;
+  border-radius: 12px;
+}
+.custom-select .css-t3ipsp-control {
+  border: none;
+  box-shadow: inset -4px 3px 10px 0px #a1e3e8;
+  padding: 0.3rem;
+  border-radius: 12px;
+}
+.custom-select .css-b62m3t-container {
+  box-shadow: inset -4px 3px 10px 0px #a1e3e8 !important;
+}
+/* ------- end (Select) custom style  ----------*/

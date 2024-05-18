@@ -22,7 +22,7 @@ function CardsWrapper({ children }: CardsWrapperProps) {
           {React.Children.count(children) > visibleCards && (
             <BtnMedIcon
               icon={<MdExpandMore />}
-              title="Show More"
+              title="Visa Mer"
               onClick={showMoreCards}
             />
           )}
