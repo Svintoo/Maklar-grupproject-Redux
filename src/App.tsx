@@ -1,5 +1,6 @@
 import "./App.css";
-import AddObject from "./components/AddObject/AddObject";
+import AddObjectBtn from "./components/addObjectBtn/AddObjectBtn";
+// import AddObject from "./components/AddObject/AddObject";
 // import UploadImage from "./firebase/upload/UploadImage";
 // import CardDetails from "./components/CardDetails/CardDetails";
 
@@ -13,7 +14,8 @@ import AddObject from "./components/AddObject/AddObject";
 function App() {
   return (
     <>
-      <AddObject />
+      <AddObjectBtn />
+      {/* <AddObject /> */}
       {/* <UploadImage /> */}
       {/* <Header />
       <Hero />
