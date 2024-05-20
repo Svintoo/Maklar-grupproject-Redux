@@ -6,17 +6,6 @@
   margin: 1.2rem auto;
   text-align: center;
 }
-.add-object-title > button {
-  font-size: 1.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: red;
-  height: 2rem;
-  width: 2rem;
-  border: 1px solid brown;
-  border-radius: 50%;
-}
 
 .add-object-input-wrapper {
   padding: 1rem;
@@ -103,12 +92,21 @@
   margin: 0.7rem auto;
 }
 
+/* add object submit btn */
+.add-object-submit-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
 /* ------- Responsive Styles  ----------*/
 @media screen and (min-width: 850px) {
   .add-object-input-wrapper {
     flex-direction: row;
     justify-content: space-evenly;
     padding: 1rem;
+    gap: 2rem;
   }
   .fastighet-input-wrapper {
     max-width: 50%;

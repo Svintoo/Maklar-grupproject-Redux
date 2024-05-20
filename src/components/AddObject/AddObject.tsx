@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import moment from "moment";
-import { MdClose, MdDelete, MdDone } from "react-icons/md";
+import { MdDelete, MdOutlineAddTask } from "react-icons/md";
 import { addDoc, collection } from "firebase/firestore";
 import { db, storage } from "../../main";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -11,10 +11,6 @@ import { RealEstate } from "../../interfaces/Interfaces";
 import { Mäklare } from "../../interfaces/MäklareInterface";
 import "./AddObject.css";
 import BtnMedIcon from "../Buttons/BtnMedIkon";
-
-interface AddObjectProps {
-  handleCloseForm: () => void;
-}
 
 const initialState: RealEstate = {
   images: [],
@@ -35,7 +31,7 @@ const initialState: RealEstate = {
   } as Mäklare,
 };
 
-function AddObject({ handleCloseForm }: AddObjectProps) {
+function AddObject() {
   const [realEstate, setRealEstate] = useState<RealEstate>(initialState);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [error, setError] = useState<string | null>(null);
@@ -204,11 +200,7 @@ function AddObject({ handleCloseForm }: AddObjectProps) {
   return (
     <>
       <div className="add-object-title">
-        <div />
         <h2>Lägg till fastigheter</h2>
-        <button onClick={handleCloseForm}>
-          <MdClose />
-        </button>
       </div>
       <section className="flex  add-object-input-wrapper">
         {/*--------------- start fastighet info --------------*/}
@@ -341,15 +333,17 @@ function AddObject({ handleCloseForm }: AddObjectProps) {
           {error && (
             <p style={{ color: "red", margin: ".3rem auto" }}>{error}</p>
           )}
-          <BtnMedIcon
-            type="submit"
-            title="spara"
-            onClick={handleSaveClick}
-            icon={<MdDone style={{ color: "green" }} />}
-          />
         </div>
         {/*-------------- end agent info ------------------*/}
       </section>
+      <div className="add-object-submit-btn">
+        <BtnMedIcon
+          type="submit"
+          title="spara"
+          onClick={handleSaveClick}
+          icon={<MdOutlineAddTask style={{ color: "green" }} />}
+        />
+      </div>
     </>
   );
 }
