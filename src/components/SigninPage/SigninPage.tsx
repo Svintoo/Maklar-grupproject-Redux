@@ -1,39 +1,57 @@
-import "./SigninPage.css"
+import { useState } from "react";
+import "./SigninPage.css";
 import { FaSignInAlt } from "react-icons/fa";
-import logo from "../../assets/imgs/logo-mäklare.png"
+import logo from "../../assets/imgs/logo-mäklare.png";
 import BtnMedIcon from "../Buttons/BtnMedIkon";
+import { createUser, signInUser, signOutUser } from "../../firebase/SignIn"
 
+const SigninPage = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
+  const handleSignIn = async () => {
+    try {
+      await signInUser(email, password);
+      // Handle successful sign in, e.g., redirect to dashboard
+    } catch (error: any) {
+      console.error("Error signing in:", error.message);
+    }
+  };
 
+  const handleCreateUser = async () => {
+    try {
+      await createUser(email, password);
+      // Handle successful user creation, e.g., redirect to dashboard
+    } catch (error: any) {
+      console.error("Error creating user:", error.message);
+    }
+  };
 
+  return (
+    <section>
+      <img className="logo" src={logo} alt="Bostadsfynd-logo" />
 
+      <input
+        className="input-field email"
+        type="text"
+        placeholder="E-post address"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <input
+        className="input-field password"
+        type="password"
+        placeholder="Lösenord"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
 
-function SigninPage () {
+      <BtnMedIcon title="Logga in" icon={<FaSignInAlt />} onClick={handleSignIn} />
+	  <BtnMedIcon title="Skapa Konto" icon={<FaSignInAlt />} onClick={handleCreateUser} />
+	  <BtnMedIcon title="Logga ut" icon={<FaSignInAlt />} onClick={signOutUser} />
 
-	return (
-		<section>
-			<img className="logo" src={ logo } alt="Bostadsfynd-logo" />
+    </section>
+  );
+};
 
-			{/* form for sign in details */}
-
-			<input className="input-field email" type="text" placeholder="E-post address" />
-			<input className="input-field password"  type="password" placeholder="Lösenord" />
-
-			{/* remember me checkbox?
-			<article className="rememberMe">
-
-				<label htmlFor="rememberMe">Kom ihåg mig</label>
-				<input className="checkbox"  type="checkbox" id="rememberMe" />
-
-			</article> */}
-
-			{/* button for log in */}
-
-			<BtnMedIcon title="Logga in" icon={<FaSignInAlt/>} />
-
-
-		</section>
-	)
-}
-
-export default SigninPage
+export default SigninPage;
