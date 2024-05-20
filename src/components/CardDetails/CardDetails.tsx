@@ -7,7 +7,6 @@ import { useState } from "react";
 import {
   MdArrowBackIosNew,
   MdArrowForwardIos,
-  MdArrowBack,
   MdRestoreFromTrash,
   MdOutlineModeEdit,
 } from "react-icons/md";
@@ -29,17 +28,20 @@ function CardDetails() {
   return (
     <article className="  container ">
       <div className="card card-details">
-        <div className="back-btn">
-          <BtnMedIcon title="Tillbaka" icon={<MdArrowBack />} />
-        </div>
-        <div className="img-wrapper  ">
-          <button onClick={prevImage} className="arrow-button left-arrow">
-            <MdArrowBackIosNew />
-          </button>
+        <div className="img-wrapper">
           <img src={images[currentImage]} alt="Property" />
-          <button onClick={nextImage} className="arrow-button right-arrow">
-            <MdArrowForwardIos />
-          </button>
+          <div className="arrow-button-wrapper">
+            <div className="arrow-button left-arrow">
+              <button onClick={prevImage}>
+                <MdArrowBackIosNew />
+              </button>
+            </div>
+            <div className="arrow-button right-arrow">
+              <button onClick={nextImage}>
+                <MdArrowForwardIos />
+              </button>
+            </div>
+          </div>
         </div>
         <div className="box details-box">
           <header className="details-header">
