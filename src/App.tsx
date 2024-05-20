@@ -10,6 +10,7 @@ import SearchFilter from "./components/SearchFilter/SearchFilter";
 // import UploadImage from "./firebase/upload/UploadImage";
 // import CardDetails from "./components/CardDetails/CardDetails";
 
+
 function App() {
   return (
     <>
@@ -27,7 +28,13 @@ function App() {
         <FastighetsCard />
         <FastighetsCard />
       </CardsWrapper>
+
+      <CardDetails /> 
+
+
       <Footer />
+
+
     </>
   );
 }
