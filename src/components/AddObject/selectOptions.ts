@@ -8,6 +8,7 @@ const bostadsTypOptions = [
   { value: "Tomt/Mark", label: "Tomt/Mark" },
   { value: "Nyproduktion", label: "Nyproduktion" },
 ];
+
 const upplåtelseformOption = [
   { value: "Hyresrätt", label: "Hyresrätt" },
   { value: "Bostadsrätt", label: "Bostadsrätt" },

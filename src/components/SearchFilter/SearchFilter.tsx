@@ -12,13 +12,13 @@ function SearchFilter() {
         margin: "1rem auto",
       }}
     >
-      <div style={{ width: "34%" }}>
+      <div className="flex" style={{ width: "45%", justifyContent: "center" }}>
         <input type="search" placeholder="Sök" />
       </div>
-      <div style={{ width: "34%" }}>
+      <div className="flex" style={{ width: "45%", justifyContent: "center" }}>
         <BtnMedIcon title="Filter" icon={<FaFilter />} />
       </div>
-      <div style={{ width: "34%" }}>
+      <div className="flex" style={{ width: "45%", justifyContent: "center" }}>
         <AddObjectBtn />
       </div>
     </div>

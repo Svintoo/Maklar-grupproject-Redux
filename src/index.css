@@ -63,6 +63,20 @@ button:active {
   scale: 0.85;
 }
 
+input {
+  padding: 0.7rem;
+  margin: 0.7rem auto;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 1px 3px 3px 0px darkgrey;
+  width: 21rem;
+  font-size: 1.2rem;
+}
+
+input:focus-visible {
+  outline: none;
+  box-shadow: inset -4px 3px 10px 0px #a1e3e8;
+}
 /* scroll--------------- */
 ::-webkit-scrollbar {
   width: 0.8rem;
