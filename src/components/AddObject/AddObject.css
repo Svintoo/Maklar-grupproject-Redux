@@ -1,0 +1,126 @@
+.add-object-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  margin: 1.2rem auto;
+  text-align: center;
+}
+.add-object-title > button {
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: red;
+  height: 2rem;
+  width: 2rem;
+  border: 1px solid brown;
+  border-radius: 50%;
+}
+
+.add-object-input-wrapper {
+  padding: 1rem;
+  flex-direction: column;
+}
+
+.add-object-input-wrapper input,
+.add-object-select {
+  padding: 0.7rem;
+  margin: 0.7rem auto;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 1px 3px 3px 0px darkgrey;
+  width: 21rem;
+  font-size: 1.2rem;
+}
+
+.add-object-input-wrapper label {
+  width: 21rem;
+  padding: 0.7rem 1rem;
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+.add-object-input-wrapper input:focus-visible {
+  outline: none;
+  box-shadow: inset -4px 3px 10px 0px #a1e3e8;
+}
+
+.fastighet-input-wrapper,
+.agent-input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.agent-input-wrapper button {
+  align-self: center;
+}
+.uploaded-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.uploaded-image {
+  display: flex;
+  flex-direction: column;
+}
+
+.uploaded-image img {
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* ------- (Select) custom style  ----------*/
+
+.css-b62m3t-container {
+  max-width: 21rem;
+  margin: 0.6rem auto;
+  padding: 0;
+}
+.css-w9q2zk-Input2 {
+  display: none;
+}
+
+.custom-select .css-13cymwt-control,
+.custom-select .css-t3ipsp-control {
+  border: none;
+  box-shadow: none;
+  padding: 0.3rem;
+  border-radius: 12px;
+}
+
+.custom-select .css-t3ipsp-control {
+  box-shadow: inset -4px 3px 10px 0px #a1e3e8;
+}
+
+.custom-select .css-b62m3t-container {
+  box-shadow: inset -4px 3px 10px 0px #a1e3e8;
+  max-width: 20rem;
+  margin: 0.7rem auto;
+}
+
+/* ------- Responsive Styles  ----------*/
+@media screen and (min-width: 850px) {
+  .add-object-input-wrapper {
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 1rem;
+  }
+  .fastighet-input-wrapper {
+    max-width: 50%;
+  }
+  .agent-input-wrapper button {
+    align-self: center;
+  }
+  .add-object-input-wrapper label,
+  h3 {
+    text-align: center;
+  }
+}
+#images > button {
+  border-radius: 20px;
+}
