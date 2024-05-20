@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./SigninPage.css";
-import { FaSignInAlt } from "react-icons/fa";
+import { FaSignInAlt,FaSignOutAlt,FaPlusCircle  } from "react-icons/fa";
 import logo from "../../assets/imgs/logo-mäklare.png";
 import BtnMedIcon from "../Buttons/BtnMedIkon";
 import { createUser, signInUser, signOutUser } from "../../firebase/SignIn"
@@ -12,7 +12,7 @@ const SigninPage = () => {
   const handleSignIn = async () => {
     try {
       await signInUser(email, password);
-      // Handle successful sign in, e.g., redirect to dashboard
+
     } catch (error: any) {
       console.error("Error signing in:", error.message);
     }
@@ -21,7 +21,7 @@ const SigninPage = () => {
   const handleCreateUser = async () => {
     try {
       await createUser(email, password);
-      // Handle successful user creation, e.g., redirect to dashboard
+
     } catch (error: any) {
       console.error("Error creating user:", error.message);
     }
@@ -47,8 +47,8 @@ const SigninPage = () => {
       />
 
       <BtnMedIcon title="Logga in" icon={<FaSignInAlt />} onClick={handleSignIn} />
-	  <BtnMedIcon title="Skapa Konto" icon={<FaSignInAlt />} onClick={handleCreateUser} />
-	  <BtnMedIcon title="Logga ut" icon={<FaSignInAlt />} onClick={signOutUser} />
+	  <BtnMedIcon title="Skapa Konto" icon={<FaPlusCircle  />} onClick={handleCreateUser} />
+	  <BtnMedIcon title="Logga ut" icon={<FaSignOutAlt  />} onClick={signOutUser} />
 
     </section>
   );
