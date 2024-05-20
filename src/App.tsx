@@ -1,4 +1,5 @@
 import "./App.css";
+
 import AddObjectBtn from "./components/addObjectBtn/AddObjectBtn";
 import CardDetails from "./components/CardDetails/CardDetails";
 
@@ -9,12 +10,15 @@ import Footer from "./components/Footer/Footer";
 import Hero from "./components/Hero/Hero";
 // import CardDetails from "./components/CardDetails/CardDetails";
 
+// import UploadImage from "./firebase/upload/UploadImage";
+// import CardDetails from "./components/CardDetails/CardDetails";
+
 function App() {
   return (
     <>
       <AddObjectBtn />
-
       <Header />
+      {/* <UploadImage /> */}
       <Hero />
       <CardsWrapper>
         <FastighetsCard />
@@ -29,6 +33,7 @@ function App() {
         <FastighetsCard />
       </CardsWrapper>
       <CardDetails />
+      =======
       <Footer />
     </>
   );

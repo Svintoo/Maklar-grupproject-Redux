@@ -1,27 +1,42 @@
 /* Header */
 @import url("https://fonts.googleapis.com/css2?family=Italianno&display=swap");
 
-.header_container {
+/* .header_container {
   background-color: #d5ecf4;
   box-shadow: 5px 5px 10px #aaaaaa;
   height: 8rem;
   display: flex;
   align-items: center;
-}
-
-.items_container {
+} */
+.header_container {
+  position: relative;
   width: 100%;
+  z-index: 10;
+  top: 0;
+  background-color: #d5ecf4;
+  border-bottom-left-radius: 50% 40px;
+  border-bottom-right-radius: 50% 40px;
+  box-shadow: 0px 1px 20px 4px #4f4f4f;
+}
+.header_container::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  box-shadow: 0px 1px 20px 8px #4f4f4f;
+}
+.items_container {
+  /* width: 100%; */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 1rem;
+  margin: 0 0.6rem 0.6rem;
 }
 
 .logo {
   font-family: "Italianno", cursive;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 400;
-  font-style: normal;
 }
 
 .login_group {
@@ -32,14 +47,15 @@
 
 .admin_name_group {
   display: flex;
-}
-.admin_icon {
-  font-size: 1.8rem;
-}
-.admin_arrow {
-  font-size: 1rem;
+  align-items: center;
 }
 
+.admin_icon {
+  font-size: 1.5rem;
+}
+.admin_arrow {
+  margin-left: 4px;
+}
 /* body {
   background-image: url("../public/img/e454e7f8-305d-4c84-a547-e66dbc33e828.png");
   background-size: cover;
@@ -52,3 +68,22 @@
   width: 100vw;
   height: 150px;
 } */
+
+@media screen and (min-width: 769px) {
+  /* .items_container {
+    padding: 2.5rem;
+  } */
+  .logo {
+    font-size: 3rem;
+  }
+  .items_container {
+    justify-content: space-between;
+    padding: 2.5rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .login_group,
+  .logo {
+    margin: 0 1rem;
+  }
+}
