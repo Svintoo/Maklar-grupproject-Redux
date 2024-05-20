@@ -1,13 +1,12 @@
 import "./App.css";
 
-import AddObjectBtn from "./components/addObjectBtn/AddObjectBtn";
 import CardDetails from "./components/CardDetails/CardDetails";
 
 import CardsWrapper from "./components/FastighetsCards/CardsWrapper";
 import FastighetsCard from "./components/FastighetsCards/FastighetsCard";
-import Header from "./components/header/Header";
 import Footer from "./components/Footer/Footer";
 import Hero from "./components/Hero/Hero";
+import SearchFilter from "./components/SearchFilter/SearchFilter";
 // import CardDetails from "./components/CardDetails/CardDetails";
 
 // import UploadImage from "./firebase/upload/UploadImage";
@@ -16,10 +15,8 @@ import Hero from "./components/Hero/Hero";
 function App() {
   return (
     <>
-      <AddObjectBtn />
-      <Header />
-      {/* <UploadImage /> */}
       <Hero />
+      <SearchFilter />
       <CardsWrapper>
         <FastighetsCard />
         <FastighetsCard />
@@ -33,7 +30,6 @@ function App() {
         <FastighetsCard />
       </CardsWrapper>
       <CardDetails />
-      =======
       <Footer />
     </>
   );
