@@ -40,6 +40,10 @@
   display: flex;
   flex-direction: column;
 }
+.agent-input-wrapper hr {
+  width: 90%;
+  margin: 0.5rem auto;
+}
 .agent-input-wrapper button {
   align-self: center;
 }
@@ -90,6 +94,11 @@
   box-shadow: inset -4px 3px 10px 0px #a1e3e8;
   max-width: 20rem;
   margin: 0.7rem auto;
+}
+.add-object-error {
+  color: red;
+  margin: 0.3rem auto;
+  text-align: center;
 }
 
 /* add object submit btn */

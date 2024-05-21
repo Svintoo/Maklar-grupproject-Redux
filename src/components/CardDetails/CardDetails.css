@@ -53,9 +53,10 @@ h4 {
 }
 
 @media screen and (min-width: 769px) {
-  /* .card-details {
-    width: 80%;
-  } */
+  .card-details {
+    width: 90%;
+    margin: 1.5rem auto;
+  }
 
   .card-details .details-header {
     font-size: 2rem;

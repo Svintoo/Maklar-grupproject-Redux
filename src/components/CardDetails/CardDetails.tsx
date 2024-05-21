@@ -78,9 +78,9 @@ function CardDetails() {
             <h3 className="kontakt">Kontakta Mäklaren</h3>
             <CardMäklare
               name="motasem"
-              mobil="077777777"
+              mobile="077777777"
               mail="asom@info.se"
-              adress="södragatan 12 Stockholm"
+              address="södragatan 12 Stockholm"
             />
           </div>
           <footer className="details-footer">
