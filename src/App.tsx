@@ -6,19 +6,13 @@ import Footer from "./components/Footer/Footer";
 import Hero from "./components/Hero/Hero";
 import SearchFilter from "./components/SearchFilter/SearchFilter";
 
-import SigninPage from "./components/SigninPage/SigninPage";
-import CardDetails from "./components/CardDetails/CardDetails";
-
-import UploadImage from "./firebase/upload/UploadImage";
-import CardDetails from "./components/CardDetails/CardDetails";
-
-
+// import SigninPage from "./components/SigninPage/SigninPage";
 
 function App() {
   return (
     <>
       <Hero />
-<!-- 	  <SigninPage/> -->
+      {/* <SigninPage /> */}
       <SearchFilter />
       <CardsWrapper>
         <FastighetsCard />
@@ -32,10 +26,6 @@ function App() {
         <FastighetsCard />
         <FastighetsCard />
       </CardsWrapper>
-
-
-      <CardDetails />  
-
 
       <Footer />
     </>
