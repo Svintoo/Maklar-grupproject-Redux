@@ -10,6 +10,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  box-shadow: 0px 0px 10px 3px darkgrey;
 }
 
 .img-footer-wrapper::after {
@@ -96,12 +97,13 @@ footer h3 {
   text-align: center;
 }
 .info-footer-wrapper {
+  background-color: #d5ecf4dd;
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
   gap: 1rem;
-  margin: 1rem auto;
+  padding: 1rem 0;
 }
 .info-footer-wrapper > div {
   width: 45%;

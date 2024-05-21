@@ -55,6 +55,8 @@ function AddObject() {
     ) {
       setError("Vänligen fyll i alla obligatoriska fält.");
       return;
+    } else {
+      setError(null);
     }
 
     try {
@@ -301,6 +303,7 @@ function AddObject() {
         {/*-------------- strat agent info ------------------*/}
         <div className="agent-input-wrapper ">
           <hr style={{ width: "60%", margin: "10px auto" }} />
+          {/*fixa sen*/}
           <h3>Mäklare</h3>
           <input
             type="text"
