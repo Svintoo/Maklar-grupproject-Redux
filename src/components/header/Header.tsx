@@ -1,15 +1,11 @@
 import { useState } from "react";
 import { VscAccount, VscArrowCircleDown } from "react-icons/vsc";
 import "./Header.css";
-// import DropdownMenu from "../DropdownMenu/Dropdown";
+
 import SigninPage from "../SigninPage/SigninPage";
-import { signOutUser } from "../../firebase/SignIn";
 import Overlay from "../Overlay/Overlay";
 
 const Header: React.FC = () => {
-//   const [isMenuOpen, setIsMenuOpen] = useState(false);
-//   const [isLoggedIn, setIsLoggedIn] = useState(false);
-//   const [showSignIn, setShowSignIn] = useState(false);
 
 const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -21,26 +17,6 @@ const handleOpenModal = () => {
     setIsModalVisible(false);
   };
 
-//   const toggleMenu = () => {
-//     setIsMenuOpen(!isMenuOpen);
-//   };
-
-//   const handleSignOut = async () => {
-//     try {
-//       await signOutUser();
-//       setIsLoggedIn(false);
-//     } catch (error: any) {
-//       console.error("Error signing out:", error.message);
-//     }
-//   };
-
-//   const handleSignIn = () => {
-//     setShowSignIn(true);
-//   };
-
-//   const closeSignIn = () => {
-//     setShowSignIn(false);
-//   };
 
   return (
     <>
@@ -57,12 +33,7 @@ const handleOpenModal = () => {
               <p>Admin</p>
               <VscArrowCircleDown className="admin_arrow" />
             </div>
-            {/* <DropdownMenu
-              isOpen={isMenuOpen}
-              isLoggedIn={isLoggedIn}
-              onSignOut={handleSignOut}
-            //   onSignIn={handleSignIn}
-            /> */}
+
           </div>
         </div>
       </header>
@@ -73,7 +44,7 @@ const handleOpenModal = () => {
         </Overlay>
 
 	  )}
-      {/* {showSignIn && <SigninPage onClose={closeSignIn} />} */}
+
     </>
   );
 };
