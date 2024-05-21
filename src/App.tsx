@@ -12,8 +12,10 @@ function App() {
   return (
     <>
       <Hero />
+
       {/* <SigninPage /> */}
       <SearchFilter />
+
       <CardsWrapper>
         <FastighetsCard />
         <FastighetsCard />

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./SigninPage.css";
-import { FaSignInAlt,FaSignOutAlt,FaPlusCircle  } from "react-icons/fa";
+import { FaSignInAlt,FaSignOutAlt,FaPlusCircle } from "react-icons/fa";
 import logo from "../../assets/imgs/logo-mäklare.png";
 import BtnMedIcon from "../Buttons/BtnMedIkon";
 import { createUser, signInUser, signOutUser } from "../../firebase/SignIn"
@@ -28,7 +28,7 @@ const SigninPage = () => {
   };
 
   return (
-    <section>
+    <section className="signin-page">
       <img className="logo" src={logo} alt="Bostadsfynd-logo" />
 
       <input
@@ -47,7 +47,7 @@ const SigninPage = () => {
       />
 
       <BtnMedIcon title="Logga in" icon={<FaSignInAlt />} onClick={handleSignIn} />
-	  <BtnMedIcon title="Skapa Konto" icon={<FaPlusCircle  />} onClick={handleCreateUser} />
+	  <BtnMedIcon title="Skapa Konto" icon={<FaPlusCircle />} onClick={handleCreateUser} />
 	  <BtnMedIcon title="Logga ut" icon={<FaSignOutAlt  />} onClick={signOutUser} />
 
     </section>
