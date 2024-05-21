@@ -1,5 +1,5 @@
-import "../FastighetsCards/FastighetsCard.css";
 import "./CardDetails.css";
+import "../FastighetsCards/FastighetsCard.css";
 import { useState } from "react";
 import {
   MdArrowBackIosNew,
@@ -10,13 +10,16 @@ import {
 import BtnMedIcon from "../Buttons/BtnMedIkon";
 import CardMäklare from "../CardMäklare/CardMäklare";
 import { RealEstate } from "../../interfaces/Interfaces";
+import Overlay from "../Overlay/Overlay";
 
 interface CardDetailsProps {
   fastighet: RealEstate;
+  handleDelete: () => void;
 }
 
-function CardDetails({ fastighet }: CardDetailsProps) {
+function CardDetails({ fastighet, handleDelete }: CardDetailsProps) {
   const [currentImage, setCurrentImage] = useState(0);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const nextImage = () => {
     setCurrentImage((prevIndex) => (prevIndex + 1) % fastighet.images.length);
@@ -27,7 +30,21 @@ function CardDetails({ fastighet }: CardDetailsProps) {
       prevIndex === 0 ? fastighet.images.length - 1 : prevIndex - 1
     );
   };
+  const handleOpenModal = () => {
+    setIsModalVisible(true);
+  };
 
+  const handleCloseModal = () => {
+    setIsModalVisible(false);
+  };
+  const confirmDelete = () => {
+    handleDelete();
+    setIsModalVisible(false);
+  };
+
+  const cancelDelete = () => {
+    setIsModalVisible(false);
+  };
   return (
     <article className="container">
       <div className="card card-details">
@@ -90,12 +107,26 @@ function CardDetails({ fastighet }: CardDetailsProps) {
           <footer className="details-footer">
             <BtnMedIcon icon={<MdOutlineModeEdit />} title={"Redigera"} />
             <BtnMedIcon
+              onClick={handleOpenModal}
               icon={<MdRestoreFromTrash style={{ color: "red" }} />}
               title={"Radera"}
             />
           </footer>
         </div>
       </div>
+      {isModalVisible && (
+        <Overlay handleCloseForm={handleCloseModal}>
+          <>
+            <div className="confirm-delete-wrapper">
+              <h2>Vill du verkligen ta bort objektet? </h2>
+              <div className="confirm-deleteBtn-wrapper">
+                <BtnMedIcon title="JA" onClick={confirmDelete} />
+                <BtnMedIcon title="Nej" onClick={cancelDelete} />
+              </div>
+            </div>
+          </>
+        </Overlay>
+      )}
     </article>
   );
 }

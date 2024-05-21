@@ -4,17 +4,17 @@ import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import BtnSvart from "../Buttons/BtnSvart";
 import CardDetails from "../CardDetails/CardDetails";
 import Overlay from "../Overlay/Overlay";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 import { db } from "../../main";
 import { RealEstate } from "../../interfaces/Interfaces";
 
 function FastighetsCard() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [fastighets, setFastighets] = useState<RealEstate[]>([]);
-  const [selectedFastighet, setSelectedFastighet] = useState<RealEstate | null>(
+  const [selectedFastighetId, setSelectedFastighetId] = useState<string | null>(
     null
   );
-  const [currentImage, setCurrentImage] = useState<number[]>([]);
+  const [currentImage, setCurrentImage] = useState<number[]>([0]);
 
   // Hämta dat varje gång datan förändras
   useEffect(() => {
@@ -31,6 +31,21 @@ function FastighetsCard() {
     );
     return () => unsubscribe();
   }, []);
+
+  const handleDelete = async (id: string) => {
+    await deleteDoc(doc(db, "fastigheter", id));
+    handleCloseModal();
+  };
+
+  const handleOpenModal = (id: string) => {
+    setSelectedFastighetId(id);
+    setIsModalVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalVisible(false);
+    setSelectedFastighetId(null);
+  };
 
   const nextImage = (index: number) => {
     setCurrentImage((prevIndexes) =>
@@ -52,17 +67,6 @@ function FastighetsCard() {
           : currentIndex
       )
     );
-  };
-
-  const handleOpenModal = (id: string) => {
-    const selected = fastighets.find((fastighet) => fastighet.id === id);
-    setSelectedFastighet(selected || null);
-    setIsModalVisible(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalVisible(false);
-    setSelectedFastighet(null);
   };
 
   const fastighetCards = fastighets.map((fastighet, index) => (
@@ -104,13 +108,20 @@ function FastighetsCard() {
       </div>
     </article>
   ));
-
+  const selectedFastighet = fastighets.find(
+    (fastighet) => fastighet.id === selectedFastighetId
+  );
   return (
     <>
       {fastighetCards}
       {isModalVisible && selectedFastighet && (
         <Overlay handleCloseForm={handleCloseModal}>
-          <CardDetails fastighet={selectedFastighet} />
+          <CardDetails
+            fastighet={selectedFastighet}
+            handleDelete={() =>
+              selectedFastighet.id && handleDelete(selectedFastighet.id)
+            }
+          />
         </Overlay>
       )}
     </>
