@@ -6,8 +6,13 @@ import AddObject from "../AddObject/AddObject";
 import Overlay from "../Overlay/Overlay";
 import { IoAddCircleOutline } from "react-icons/io5";
 
+import FilterView from "../Filter/filter";
+
 function SearchFilter() {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  //-----------------------------------filter
+  const [isfilterVisible, setIsfilterVisible] = useState(false);
+  //-----------------------------------filter 
 
   const handleOpenModal = () => {
     setIsModalVisible(true);
@@ -17,17 +22,41 @@ function SearchFilter() {
     setIsModalVisible(false);
   };
 
+
+  //-----------------------------------filter
+  const handleOpenModal2 = () => {
+    setIsfilterVisible(true);
+  };
+
+  const handleCloseModal2 = () => {
+    setIsfilterVisible(false);
+  };
+  //-----------------------------------filter
+
   return (
     <>
       <div className=" search-filter-wrapper">
         <div className="search-input">
           <input type="search" placeholder="Sök" />
         </div>
-        <div className="Filter">
-          <BtnMedIcon title="Filter" icon={<FaFilter />} />
-        </div>
-      </div>
 
+        {/* //-----------------------------------filter */}
+        <div className="Filter"> 
+          <BtnMedIcon 
+          title="Filter"
+          onClick={handleOpenModal2}
+          icon={<FaFilter />} />
+
+        </div>
+        {isfilterVisible && (
+        <Overlay handleCloseForm={handleCloseModal2}>
+          <FilterView />
+        </Overlay>
+      )}
+      </div>
+        {/* //-----------------------------------filter */}
+
+        
       <div className="add-object-btn">
         <BtnMedIcon
           title="Lägg till objekt"
