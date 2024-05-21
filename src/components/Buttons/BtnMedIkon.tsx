@@ -3,6 +3,7 @@ interface BtnMedIconProps {
   onClick?: () => void;
   icon?: React.ReactNode;
   type?: string;
+  className?: string;
   title: string;
 }
 

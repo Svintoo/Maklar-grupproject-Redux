@@ -1,58 +1,238 @@
 
-
-/* section {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1px;
-    color: black;
-    margin-top: auto;
-    
-} */
 .footer-section {
-
-    text-align: left;
-    padding: 0.3em;
-    margin: 1rem;
+  text-align: left;
+  padding: 0.3em;
+  margin: 1rem;
 }
 
 h3 {
-    font-size: 0.9rem;
-    margin: 0;
+  font-size: 0.9rem;
+  margin: 0;
 }
 
 ul {
-    list-style-type: none;
-    padding: 0.2em;
-    margin: 0;
+  list-style-type: none;
+  padding: 0.2em;
+  margin: 0;
 }
 
 li {
-    margin-bottom: 0.34rem;
-    font-size: 0.8rem;
-    margin: 0;
+  margin-bottom: 0.34rem;
+  font-size: 0.8rem;
+  margin: 0;
 }
 
-p{
-    margin: 0;
+p {
+  margin: 0;
 }
 
-.bostadsfynd{
-    font-size: 1.2em;
-    /* font-family: "Itallianno" ; */
+.footer-logo {
+  font-size: 1.5rem;
+  font-family: "Italianno", cursive;
+}
+.footer-logo > p {
+  font-size: 1.5rem;
+}
+.footer-logo > h3 {
+  font-weight: 400;
+}
+.followUsIcon {
+  display: flex;
+  gap: 0.6rem;
+  margin: 0.4rem;
+}
+.hover:hover {
+  cursor: pointer;
 }
 
-.followUsIcon{
-    display: flex;
-    gap:0.6rem;
-    margin:0.4rem;
-}
-.hover:hover{
-    cursor: pointer;
+.copyrhight {
+  color: #ffffff;
+  background-color: black;
+  font-size: 0.8rem;
+  text-align: center;
+} */
+
+.img-footer-wrapper {
+  position: relative;
+  width: 100%;
+  height: 20rem;
+  background-image: url(../../assets/imgs/spacejoy-YI2YkyaREHk-unsplash.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
-.copyrhight{
-    color: #ffffff;
-    background-color: black;
-    font-size: 0.8rem;
-    text-align: center;
+.img-footer-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.input-with-button-wrapper {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  z-index: 2;
+}
+.footer-text-wrapper {
+  text-align: center;
+  padding: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+.footer-text-wrapper h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.footer-text-wrapper p {
+  width: 80%;
+  font-size: 0.8rem;
+}
+
+.input-field {
+  width: 90%;
+  margin: 0 auto;
+  font-size: 0.9rem;
+  padding: 0.7rem;
+}
+
+.input-button {
+  position: absolute;
+  right: 24px;
+  top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.8rem;
+  width: 4rem;
+  font-size: 0.7rem;
+  border: none;
+  background-color: #0a0a0a;
+  color: white;
+  padding: 0 0.5rem;
+  cursor: pointer;
+  border-radius: 40px;
+}
+
+/* footer logo  */
+.footer-logo {
+  font-size: 1.5rem;
+  font-family: "Italianno", cursive;
+}
+.footer-logo > p {
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 0.5rem;
+}
+.footer-logo > h3 {
+  font-weight: 400;
+  font-size: 2rem;
+  padding: 0;
+}
+
+/* info footer wrapper */
+footer h3 {
+  text-align: center;
+}
+.info-footer-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem auto;
+}
+.info-footer-wrapper > div {
+  width: 45%;
+}
+
+.footer-Quick-Link ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+.footer-Quick-Link ul li {
+  font-weight: 500;
+  cursor: pointer;
+}
+.footer-Contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer-Contact > p {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.1rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+.footer-Contact p > span {
+  padding: 0.2rem;
+}
+
+/* footer-follow */
+.footer-follow ul {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 1rem;
+}
+.footer-follow ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+}
+
+.copyrhight > p {
+  background-color: #0a0a0a;
+  color: rgb(176, 173, 173);
+  padding: 1rem;
+  font-size: 0.7rem;
+  text-align: center;
+  box-shadow: 0px 1px 10px 4px #4f4f4f;
+}
+.copyrhight p > span {
+  margin-right: 0.2rem;
+  font-size: 1.3rem;
+  font-family: "Italianno", cursive;
+}
+
+@media screen and (min-width: 769px) {
+  .info-footer-wrapper > div {
+    width: 32%;
+  }
+  .footer-Contact > p {
+    width: 50%;
+  }
+
+  .footer-logo > p {
+    font-size: 1.7rem;
+  }
+  .footer-logo > h3 {
+    font-weight: 400;
+    font-size: 2.7rem;
+    padding: 0;
+  }
 }

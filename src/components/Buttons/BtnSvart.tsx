@@ -4,6 +4,7 @@ import "./Button.css";
 interface BtnSvartProps {
   onClick?: () => void;
   title: string;
+  className?: string;
 }
 
 const BtnSvart: React.FC<BtnSvartProps> = ({ title, onClick }) => {
