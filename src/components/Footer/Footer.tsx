@@ -6,58 +6,6 @@ import { GoMail } from "react-icons/go";
 function footer() {
   return (
     <>
-      {/* <footer>
-        <section>
-          <div className="footer-section footer-logo">
-            <h3 className="bostadsfynd">Bostadsfynd</h3>
-            <p>
-              Vi hjälper dig att hitta ditt <em>drömhus</em>
-            </p>
-          </div>
-          <div className="footer-section">
-            <h3>Contact info</h3>
-            <ul>
-              <li>Stockholmsvägen xx, 19xx</li>
-              <li>Info@bodstadsfynd.com</li>
-              <li>+46 888 8888</li>
-            </ul>
-          </div>
-          <div className="footer-section">
-            <h3>Quick Link</h3>
-            <ul>
-              <li>
-                <span className="hover"> Home </span>
-              </li>
-              <li>
-                <span className="hover">About </span>
-              </li>
-              <li>
-                <span className="hover">Tours </span>
-              </li>
-              <li>
-                <span className="hover">Contact </span>
-              </li>
-            </ul>
-          </div>
-          <div className="footer-section">
-            <h3>Follow Us</h3>
-            <div className="followUsIcon">
-              <p className="hover">
-                <FaFacebook />
-              </p>
-              <p className="hover">
-                <FaInstagram />
-              </p>
-              <p className="hover">
-                <FaTwitterSquare />
-              </p>
-            </div>
-          </div>
-        </section>
-        <div className="copyrhight">
-          Copyright © All rights reserved (Bostadsfynd) 2024
-        </div>
-      </footer> */}
       <footer>
         <section className="img-footer-wrapper">
           <div className="footer-text-wrapper ">
