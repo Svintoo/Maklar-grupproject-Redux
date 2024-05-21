@@ -16,7 +16,7 @@ function CardsWrapper({ children }: CardsWrapperProps) {
 
   return (
     <>
-      <section className="cards-wrapper ">
+      <section className="cards-wrapper container">
         {React.Children.toArray(children).slice(0, visibleCards)}
         <div className="cards-wrapper-btn">
           {React.Children.count(children) > visibleCards && (

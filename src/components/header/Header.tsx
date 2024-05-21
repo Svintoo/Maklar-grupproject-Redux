@@ -1,4 +1,3 @@
-//import headerBackground from "../assets/img/header-background.png";
 import { VscAccount, VscArrowCircleDown } from "react-icons/vsc";
 import "./Header.css";
 
