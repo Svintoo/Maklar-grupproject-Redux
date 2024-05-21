@@ -1,0 +1,26 @@
+.signin-page {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+}
+
+.logo {
+	margin:.5rem;
+	padding: 1rem;
+}
+
+.input-field {
+	margin: 1rem;
+	border: 1px solid rgb(229, 229, 229);
+	border-radius: 12px;
+	height: 3rem;
+	min-width: 8rem;
+	box-shadow: 0px 2px 1px 0px #838383;
+	font-size: 1.2rem;
+	padding: 0.4rem;
+}
+
+
+

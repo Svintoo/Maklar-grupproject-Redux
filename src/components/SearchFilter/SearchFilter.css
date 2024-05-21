@@ -1,0 +1,19 @@
+.search-filter-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 1rem auto;
+}
+.add-object-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (min-width: 500px) {
+  .search-filter-wrapper {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}

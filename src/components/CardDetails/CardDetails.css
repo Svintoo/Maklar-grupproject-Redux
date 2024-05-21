@@ -1,10 +1,13 @@
 .card-details {
-  width: 90%;
+  width: 100%;
   margin: 1.5rem auto;
 }
 
 .card-details .back-btn {
-  margin: 1rem 0;
+  /* margin: 1rem; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .details-box .details-header {
@@ -50,9 +53,9 @@ h4 {
 }
 
 @media screen and (min-width: 769px) {
-  .card-details {
+  /* .card-details {
     width: 80%;
-  }
+  } */
 
   .card-details .details-header {
     font-size: 2rem;
@@ -69,8 +72,8 @@ h4 {
   }
 }
 
-@media screen and (min-width: 1025px) {
+/* @media screen and (min-width: 1300px) {
   .card-details {
     width: 60%;
   }
-}
+} */

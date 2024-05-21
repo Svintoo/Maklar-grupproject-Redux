@@ -5,13 +5,10 @@
   justify-content: space-evenly;
   row-gap: 2rem;
 }
-.cards-wrapper-btn {
-  float: right;
-  margin-right: 1rem;
-}
+
 .card {
   box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.2);
-  width: 47%;
+  width: 80%;
   border: 1.5px solid rgb(213, 236, 244);
   border-radius: 12px;
   transition: 0.3s;
@@ -19,52 +16,57 @@
 
 .card:hover {
   border: 2px solid rgb(156 207 225);
-  /* rotate: -1deg; */
   scale: 1.03;
 }
 
 .card .box {
-  padding: 0.5rem 0.4rem;
-}
-.arrow-button {
-  background-color: rgba(0, 0, 0, 0.5);
-  border: none;
-  cursor: pointer;
-  outline: none;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 5px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.arrow-button svg {
-  color: white;
-  font-size: 1.3rem;
+  padding: 0.8rem;
 }
 
 .img-wrapper {
   position: relative;
-}
-
-.img-wrapper img {
-  max-width: 100%;
+  width: 100%;
+  overflow: hidden;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
 
-.img-wrapper .arrow-button {
-  margin: 0;
-}
-.left-arrow {
-  left: 5px;
+.img-wrapper img {
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
 }
 
-.right-arrow {
-  right: 5px;
+.arrow-button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* z-index: 12; */
+}
+
+.arrow-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 100%;
+  cursor: pointer;
+}
+
+.arrow-button button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.arrow-button svg {
+  color: white;
+  font-size: 1.7rem;
 }
 
 .card header {
@@ -118,34 +120,46 @@ footer.visas button {
   font-size: 1rem;
 }
 
+/* visa mer btn  */
+.cards-wrapper-btn {
+  float: right;
+  margin-right: 1rem;
+}
+
 @media screen and (min-width: 769px) {
   .card {
-    width: 32%;
+    width: 45%;
   }
-  /* .cards-wrapper {
-    padding: 1rem;
-  } */
+
   .card header small {
     font-size: 0.8rem;
   }
+
   .arrow-button svg {
-    font-size: 1.6rem;
+    font-size: 2rem;
   }
+
+  /* .img-wrapper img {
+    height: 18rem;
+  } */
   footer.visas small {
     font-size: 0.8rem;
   }
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1300px) {
   .card {
-    width: 22%;
+    width: 32%;
   }
-  /* .cards-wrapper {
-    padding: 2rem;
-  } */
+  .cards-wrapper {
+    padding: 1rem;
+  }
   .card header small {
     font-size: 0.8rem;
   }
+  /* .img-wrapper img {
+    height: 20rem;
+  } */
 
   footer.visas small {
     font-size: 0.8rem;
