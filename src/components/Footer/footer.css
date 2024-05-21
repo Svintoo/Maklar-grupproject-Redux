@@ -1,13 +1,13 @@
 
 
-section {
+/* section {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1px;
     color: black;
     margin-top: auto;
     
-}
+} */
 .footer-section {
 
     text-align: left;
