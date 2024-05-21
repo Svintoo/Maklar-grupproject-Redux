@@ -87,6 +87,7 @@ function AddObject() {
       setError("Ett fel inträffade vid sparandet.");
     }
   };
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -111,28 +112,6 @@ function AddObject() {
       });
     }
   };
-
-  // const handleInputChange = (
-  //   e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  // ) => {
-  //   const { name, value, files } = e.target;
-  //   if (files) {
-  //     // If input type is file (for images)
-  //     setRealEstate({
-  //       ...realEstate,
-  //       images: Array.from(files), // Convert FileList to array of files
-  //     });
-
-  //     // Display the selected images immediately
-  //     const urls = Array.from(files).map((file) => URL.createObjectURL(file));
-  //     setUploadedImageUrls(urls);
-  //   } else {
-  //     setRealEstate({
-  //       ...realEstate,
-  //       [name]: value,
-  //     });
-  //   }
-  // };
 
   const handleDeleteImage = (index: number) => {
     const newImages = [...realEstate.images];
