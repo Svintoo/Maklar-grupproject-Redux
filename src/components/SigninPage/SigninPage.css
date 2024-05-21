@@ -1,4 +1,4 @@
-section {
+.signin-page {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -21,5 +21,6 @@ section {
 	font-size: 1.2rem;
 	padding: 0.4rem;
 }
+
 
 
