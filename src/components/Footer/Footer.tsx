@@ -19,7 +19,7 @@ function footer() {
             <input
               type="text"
               placeholder="Skriv din mail här"
-              className="input-field"
+              className="footer-input-field"
             />
             <button className="input-button">Subscribe</button>
           </div>

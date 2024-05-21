@@ -51,7 +51,7 @@
   font-size: 0.8rem;
 }
 
-.input-field {
+.footer-input-field {
   width: 90%;
   margin: 0 auto;
   font-size: 0.9rem;
@@ -60,7 +60,7 @@
 
 .input-button {
   position: absolute;
-  right: 24px;
+  right: 25px;
   top: 5px;
   display: flex;
   align-items: center;
