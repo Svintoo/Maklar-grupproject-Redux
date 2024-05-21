@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Select from "react-select";
 import moment from "moment";
 import { MdDelete, MdOutlineAddTask } from "react-icons/md";
@@ -36,6 +36,7 @@ function AddObject() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [error, setError] = useState<string | null>(null);
   const [uploadedImageUrls, setUploadedImageUrls] = useState<string[]>([]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleSaveClick = async () => {
     if (
@@ -53,7 +54,7 @@ function AddObject() {
       !realEstate.agent.mail ||
       !realEstate.agent.address
     ) {
-      setError("Vänligen fyll i alla obligatoriska fält.");
+      setError("Vänligen fyll i alla obligatoriska fält !");
       return;
     } else {
       setError(null);
@@ -122,6 +123,13 @@ function AddObject() {
     const newUrls = [...uploadedImageUrls];
     newUrls.splice(index, 1);
     setUploadedImageUrls(newUrls);
+
+    // update input value for image-input
+    const dataTransfer = new DataTransfer();
+    newImages.forEach((file) => dataTransfer.items.add(file));
+    if (fileInputRef.current) {
+      fileInputRef.current.files = dataTransfer.files;
+    }
   };
 
   const renderUploadedImages = () => {
@@ -191,9 +199,11 @@ function AddObject() {
             id="images"
             type="file"
             accept="image/*"
+            ref={fileInputRef}
             multiple
             onChange={handleInputChange}
           />
+
           <div className="uploaded-image-container ">
             {renderUploadedImages()}
           </div>
@@ -281,7 +291,7 @@ function AddObject() {
         {/*--------------- end fastighet info --------------*/}
         {/*-------------- strat agent info ------------------*/}
         <div className="agent-input-wrapper ">
-          <hr style={{ width: "60%", margin: "10px auto" }} />
+          <hr />
           {/*fixa sen*/}
           <h3>Mäklare</h3>
           <input
@@ -312,12 +322,10 @@ function AddObject() {
             value={realEstate.agent.address}
             onChange={handleAgentInputChange}
           />
-          {error && (
-            <p style={{ color: "red", margin: ".3rem auto" }}>{error}</p>
-          )}
         </div>
         {/*-------------- end agent info ------------------*/}
       </section>
+      {error && <p className="add-object-error">{error}</p>}
       <div className="add-object-submit-btn">
         <BtnMedIcon
           type="submit"
