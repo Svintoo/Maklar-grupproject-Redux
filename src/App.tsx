@@ -1,4 +1,5 @@
 import "./App.css";
+import { AuthProvider } from "./components/Context/AuthContext";
 
 import CardsWrapper from "./components/FastighetsCards/CardsWrapper";
 import FastighetsCard from "./components/FastighetsCards/FastighetsCard";
@@ -11,25 +12,24 @@ import SearchFilter from "./components/SearchFilter/SearchFilter";
 function App() {
   return (
     <>
-      <Hero />
-
-      {/* <SigninPage /> */}
-      <SearchFilter />
-
-      <CardsWrapper>
-        <FastighetsCard />
-        <FastighetsCard />
-        <FastighetsCard />
-        <FastighetsCard />
-        <FastighetsCard />
-        <FastighetsCard />
-        <FastighetsCard />
-        <FastighetsCard />
-        <FastighetsCard />
-        <FastighetsCard />
-      </CardsWrapper>
-
-      <Footer />
+      <AuthProvider>
+        <Hero />
+        {/* <SigninPage /> */}
+        <SearchFilter />
+        <CardsWrapper>
+          <FastighetsCard />
+          <FastighetsCard />
+          <FastighetsCard />
+          <FastighetsCard />
+          <FastighetsCard />
+          <FastighetsCard />
+          <FastighetsCard />
+          <FastighetsCard />
+          <FastighetsCard />
+          <FastighetsCard />
+        </CardsWrapper>
+        <Footer />\
+      </AuthProvider>
     </>
   );
 }
