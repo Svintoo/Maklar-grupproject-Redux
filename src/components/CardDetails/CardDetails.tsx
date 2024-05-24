@@ -3,7 +3,7 @@ import "./CardDetails.css";
 import img1 from "../../assets/imgs/clay-banks-hC2QBywnLd0-unsplash.jpg";
 import img2 from "../../assets/imgs/spacejoy-YI2YkyaREHk-unsplash.jpg";
 import img3 from "../../assets/imgs/valentina-locatelli-P8bsrm8KbM0-unsplash.jpg";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   MdArrowBackIosNew,
   MdArrowForwardIos,
@@ -12,10 +12,16 @@ import {
 } from "react-icons/md";
 import BtnMedIcon from "../Buttons/BtnMedIkon";
 import CardMäklare from "../CardMäklare/CardMäklare";
+import { AuthContext } from "../Context/AuthContext";
 const images: string[] = [img1, img2, img3];
 
 function CardDetails() {
+  const authContext = useContext(AuthContext);
   const [currentImage, setCurrentImage] = useState(0);
+  if (!authContext) {
+    throw new Error("AuthContext must be used within an AuthProvider");
+  }
+  const { isLogged } = authContext;
   const nextImage = () => {
     setCurrentImage((prevIndex) => (prevIndex + 1) % images.length);
   };
@@ -78,18 +84,20 @@ function CardDetails() {
             <h3 className="kontakt">Kontakta Mäklaren</h3>
             <CardMäklare
               name="motasem"
-              mobil="077777777"
+              mobile="077777777"
               mail="asom@info.se"
-              adress="södragatan 12 Stockholm"
+              address="södragatan 12 Stockholm"
             />
           </div>
-          <footer className="details-footer">
-            <BtnMedIcon icon={<MdOutlineModeEdit />} title={"Redigera"} />
-            <BtnMedIcon
-              icon={<MdRestoreFromTrash style={{ color: "red" }} />}
-              title={"Radera"}
-            />
-          </footer>
+          {isLogged && (
+            <footer className="details-footer">
+              <BtnMedIcon icon={<MdOutlineModeEdit />} title={"Redigera"} />
+              <BtnMedIcon
+                icon={<MdRestoreFromTrash style={{ color: "red" }} />}
+                title={"Radera"}
+              />
+            </footer>
+          )}
         </div>
       </div>
     </article>

@@ -22,7 +22,7 @@ h3 {
   display: flex;
   align-items: center;
   font-weight: 400;
-  /* font-size: 1.2rem; */
+  font-size: 0.9rem;
 }
 .mäklare-wrapper p span {
   display: flex;
@@ -35,7 +35,7 @@ h3 {
     padding: 2rem;
   }
   .mäklare-wrapper p {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
   .mäklare-wrapper h3 {
     font-size: 2.2rem;

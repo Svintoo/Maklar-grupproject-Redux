@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 
 import { VscAccount, VscArrowCircleDown } from "react-icons/vsc";
@@ -8,17 +7,15 @@ import SigninPage from "../SigninPage/SigninPage";
 import Overlay from "../Overlay/Overlay";
 
 const Header: React.FC = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
-const [isModalVisible, setIsModalVisible] = useState(false);
-
-const handleOpenModal = () => {
+  const handleOpenModal = () => {
     setIsModalVisible(true);
   };
 
   const handleCloseModal = () => {
     setIsModalVisible(false);
   };
-
 
   return (
     <>
@@ -35,18 +32,14 @@ const handleOpenModal = () => {
               <p>Admin</p>
               <VscArrowCircleDown className="admin_arrow" />
             </div>
-
           </div>
         </div>
+        {isModalVisible && (
+          <Overlay handleCloseForm={handleCloseModal}>
+            <SigninPage />
+          </Overlay>
+        )}
       </header>
-
-	  {isModalVisible && (
-		<Overlay handleCloseForm={handleCloseModal}>
-          <SigninPage />
-        </Overlay>
-
-	  )}
-
     </>
   );
 };
