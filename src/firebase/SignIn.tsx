@@ -33,8 +33,8 @@ export const createUser = async (email: string, password: string) => {
 export const signOutUser = async () => {
   try {
     await signOut(auth);
-    console.log("User signed out");
+    // console.log("User signed out");
   } catch (error) {
-    // console.error("Error signing out:", error.message);
+    console.error("Error signing out:", error);
   }
 };
