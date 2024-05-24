@@ -36,9 +36,9 @@ function CardDetails({ fastighet, handleDelete }: CardDetailsProps) {
       prevIndex === 0 ? fastighet.images.length - 1 : prevIndex - 1
     );
   };
-  // const handleOpenModal = () => {
-  //   setIsModalVisible(true);
-  // };
+  const handleOpenModal = () => {
+    setIsModalVisible(true);
+  };
 
   const handleCloseModal = () => {
     setIsModalVisible(false);
@@ -115,6 +115,7 @@ function CardDetails({ fastighet, handleDelete }: CardDetailsProps) {
             <footer className="details-footer">
               <BtnMedIcon icon={<MdOutlineModeEdit />} title={"Redigera"} />
               <BtnMedIcon
+                onClick={handleOpenModal}
                 icon={<MdRestoreFromTrash style={{ color: "red" }} />}
                 title={"Radera"}
               />
