@@ -4,6 +4,8 @@ import "./CardDetails.css";
 import { useContext, useState } from "react";
 
 import "../FastighetsCards/FastighetsCard.css";
+import { RealEstate } from "../../interfaces/Interfaces";
+import Overlay from "../Overlay/Overlay";
 
 
 import {
@@ -16,18 +18,16 @@ import BtnMedIcon from "../Buttons/BtnMedIkon";
 import CardMäklare from "../CardMäklare/CardMäklare";
 
 import { AuthContext } from "../Context/AuthContext";
-const images: string[] = [img1, img2, img3];
+
 
 function CardDetails() {
   const authContext = useContext(AuthContext);
-  const [currentImage, setCurrentImage] = useState(0);
+  
   if (!authContext) {
     throw new Error("AuthContext must be used within an AuthProvider");
   }
   const { isLogged } = authContext;
-=======
-import { RealEstate } from "../../interfaces/Interfaces";
-import Overlay from "../Overlay/Overlay";
+
 
 interface CardDetailsProps {
   fastighet: RealEstate;
