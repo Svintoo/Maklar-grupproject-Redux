@@ -12,6 +12,7 @@ import SearchFilter from "./components/SearchFilter/SearchFilter";
 function App() {
   return (
     <>
+
       <AuthProvider>
         <Hero />
         {/* <SigninPage /> */}
@@ -30,6 +31,7 @@ function App() {
         </CardsWrapper>
         <Footer />
       </AuthProvider>
+
     </>
   );
 }
