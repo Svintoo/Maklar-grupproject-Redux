@@ -1,6 +1,11 @@
 import "./CardDetails.css";
+
+
+import { useContext, useState } from "react";
+
 import "../FastighetsCards/FastighetsCard.css";
-import { useState } from "react";
+
+
 import {
   MdArrowBackIosNew,
   MdArrowForwardIos,
@@ -9,6 +14,18 @@ import {
 } from "react-icons/md";
 import BtnMedIcon from "../Buttons/BtnMedIkon";
 import CardMäklare from "../CardMäklare/CardMäklare";
+
+import { AuthContext } from "../Context/AuthContext";
+const images: string[] = [img1, img2, img3];
+
+function CardDetails() {
+  const authContext = useContext(AuthContext);
+  const [currentImage, setCurrentImage] = useState(0);
+  if (!authContext) {
+    throw new Error("AuthContext must be used within an AuthProvider");
+  }
+  const { isLogged } = authContext;
+=======
 import { RealEstate } from "../../interfaces/Interfaces";
 import Overlay from "../Overlay/Overlay";
 
@@ -104,14 +121,17 @@ function CardDetails({ fastighet, handleDelete }: CardDetailsProps) {
               address={fastighet.agent.address}
             />
           </div>
-          <footer className="details-footer">
-            <BtnMedIcon icon={<MdOutlineModeEdit />} title={"Redigera"} />
-            <BtnMedIcon
-              onClick={handleOpenModal}
-              icon={<MdRestoreFromTrash style={{ color: "red" }} />}
-              title={"Radera"}
-            />
-          </footer>
+
+          {isLogged && (
+            <footer className="details-footer">
+              <BtnMedIcon icon={<MdOutlineModeEdit />} title={"Redigera"} />
+              <BtnMedIcon
+                icon={<MdRestoreFromTrash style={{ color: "red" }} />}
+                title={"Radera"}
+              />
+            </footer>
+          )}
+
         </div>
       </div>
       {isModalVisible && (

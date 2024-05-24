@@ -1,5 +1,5 @@
 import "./SearchFilter.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import BtnMedIcon from "../Buttons/BtnMedIkon";
 // import { FaFilter } from "react-icons/fa";
 import AddObject from "../AddObject/AddObject";
@@ -8,8 +8,16 @@ import { IoAddCircleOutline } from "react-icons/io5";
 
 import FilterView from "../Filter/filter";
 import { CiFilter } from "react-icons/ci";
+import { AuthContext } from "../Context/AuthContext";
 
 function SearchFilter() {
+  const authContext = useContext(AuthContext);
+
+  if (!authContext) {
+    throw new Error("AuthContext must be used within an AuthProvider");
+  }
+  const { isLogged } = authContext;
+
   const [isModalVisible, setIsModalVisible] = useState(false);
   //-----------------------------------filter
   const [isfilterVisible, setIsfilterVisible] = useState(false);
@@ -55,14 +63,16 @@ function SearchFilter() {
         )}
       </div>
       {/* //-----------------------------------filter */}
+      {isLogged && (
+        <div className="add-object-btn">
+          <BtnMedIcon
+            title="Lägg till objekt"
+            onClick={handleOpenModal}
+            icon={<IoAddCircleOutline />}
+          />
+        </div>
+      )}
 
-      <div className="add-object-btn">
-        <BtnMedIcon
-          title="Lägg till objekt"
-          onClick={handleOpenModal}
-          icon={<IoAddCircleOutline />}
-        />
-      </div>
       {isModalVisible && (
         <Overlay handleCloseForm={handleCloseModal}>
           <AddObject />

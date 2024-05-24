@@ -1,14 +1,22 @@
-import { useState } from "react";
+// SigninPage.tsx
+import React, { useState, useContext } from "react";
 import "./SigninPage.css";
 import { FaSignInAlt, FaSignOutAlt, FaPlusCircle } from "react-icons/fa";
 import logo from "../../assets/imgs/logo-mäklare.png";
 import BtnMedIcon from "../Buttons/BtnMedIkon";
 import { createUser, signInUser, signOutUser } from "../../firebase/SignIn";
+import { AuthContext } from "../Context/AuthContext";
 
-const SigninPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLogged, setIsLogged] = useState(false);
+const SigninPage: React.FC = () => {
+  const authContext = useContext(AuthContext);
+
+  if (!authContext) {
+    throw new Error("AuthContext must be used within an AuthProvider");
+  }
+
+  const { isLogged, setIsLogged } = authContext;
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
 
   const handleSignIn = async () => {
@@ -24,7 +32,8 @@ const SigninPage = () => {
       setEmail("");
       setPassword("");
     } catch (error) {
-      console.error("Error signing in:");
+      console.error("Error signing in:", error);
+      setError("Fel vid inloggning");
     }
   };
 
@@ -32,7 +41,8 @@ const SigninPage = () => {
     try {
       await createUser(email, password);
     } catch (error) {
-      console.error("Error creating user:");
+      console.error("Error creating user:", error);
+      setError("Fel vid skapande av konto");
     }
   };
 
