@@ -52,6 +52,38 @@ h4 {
   justify-content: space-around;
 }
 
+/* confirm delete wrapper */
+.confirm-delete-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+}
+.confirm-delete-wrapper h2 {
+  text-align: center;
+}
+.confirm-deleteBtn-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem;
+  gap: 3rem;
+}
+.confirm-deleteBtn-wrapper button:nth-child(1) {
+  background-color: green;
+  color: white;
+}
+.confirm-deleteBtn-wrapper button:nth-child(2) {
+  background-color: RED;
+  color: white;
+}
+
+.confirm-deleteBtn-wrapper button:nth-child(1) span,
+.confirm-deleteBtn-wrapper button:nth-child(2) span {
+  margin-left: 0.9rem;
+}
+
 @media screen and (min-width: 769px) {
   .card-details {
     width: 90%;

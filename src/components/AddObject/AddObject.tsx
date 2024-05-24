@@ -36,6 +36,7 @@ function AddObject() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [error, setError] = useState<string | null>(null);
   const [uploadedImageUrls, setUploadedImageUrls] = useState<string[]>([]);
+  const [files, setFiles] = useState<File[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleSaveClick = async () => {
@@ -61,15 +62,13 @@ function AddObject() {
     }
 
     try {
-      const imageUrls = [];
-      if (realEstate.images.length > 0) {
-        for (const image of realEstate.images) {
-          if (typeof image === "object" && image !== null && "name" in image) {
-            const storageRef = ref(storage, `images/${image.name}`);
-            const snapshot = await uploadBytes(storageRef, image);
-            const imageUrl = await getDownloadURL(snapshot.ref);
-            imageUrls.push(imageUrl);
-          }
+      const imageUrls: string[] = [];
+      if (files.length > 0) {
+        for (const file of files) {
+          const storageRef = ref(storage, `images/${file.name}`);
+          const snapshot = await uploadBytes(storageRef, file);
+          const imageUrl = await getDownloadURL(snapshot.ref);
+          imageUrls.push(imageUrl);
         }
       }
 
@@ -83,6 +82,11 @@ function AddObject() {
       console.log(realEstateData);
       setRealEstate(initialState);
       setSelectedCategory(null);
+      setFiles([]);
+      setUploadedImageUrls([]);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
     } catch (error) {
       console.error(error);
       setError("Ett fel inträffade vid sparandet.");
@@ -95,15 +99,11 @@ function AddObject() {
     const { name, value } = e.target;
 
     if (e.target instanceof HTMLInputElement && e.target.type === "file") {
-      const files = e.target.files;
-      if (files) {
-        // If input type is file (for images)
-        setRealEstate({
-          ...realEstate,
-          images: Array.from(files), // Convert FileList to array of files
-        });
-        //  Display the selected images immediately
-        const urls = Array.from(files).map((file) => URL.createObjectURL(file));
+      const selectedFiles = e.target.files;
+      if (selectedFiles) {
+        const fileArray = Array.from(selectedFiles);
+        setFiles(fileArray);
+        const urls = fileArray.map((file) => URL.createObjectURL(file));
         setUploadedImageUrls(urls);
       }
     } else {
@@ -115,18 +115,16 @@ function AddObject() {
   };
 
   const handleDeleteImage = (index: number) => {
-    const newImages = [...realEstate.images];
-    newImages.splice(index, 1);
-    setRealEstate({ ...realEstate, images: newImages });
+    const newFiles = [...files];
+    newFiles.splice(index, 1);
+    setFiles(newFiles);
 
-    // Also remove the corresponding URL from the displayed images
     const newUrls = [...uploadedImageUrls];
     newUrls.splice(index, 1);
     setUploadedImageUrls(newUrls);
 
-    // update input value for image-input
     const dataTransfer = new DataTransfer();
-    newImages.forEach((file) => dataTransfer.items.add(file));
+    newFiles.forEach((file) => dataTransfer.items.add(file));
     if (fileInputRef.current) {
       fileInputRef.current.files = dataTransfer.files;
     }
@@ -191,9 +189,9 @@ function AddObject() {
       <div className="add-object-title">
         <h2>Lägg till fastigheter</h2>
       </div>
-      <section className="flex  add-object-input-wrapper">
-        {/*--------------- start fastighet info --------------*/}
-        <div className="fastighet-input-wrapper ">
+      <section className="flex add-object-input-wrapper">
+        {/* Fastighet info */}
+        <div className="fastighet-input-wrapper">
           <label htmlFor="images">Lägg till bilder</label>
           <input
             id="images"
@@ -204,7 +202,7 @@ function AddObject() {
             onChange={handleInputChange}
           />
 
-          <div className="uploaded-image-container ">
+          <div className="uploaded-image-container">
             {renderUploadedImages()}
           </div>
 
@@ -241,7 +239,7 @@ function AddObject() {
           <Select
             placeholder="Upplåtelseform"
             options={upplåtelseformOption}
-            className="add-object-select custom-select "
+            className="add-object-select custom-select"
             value={upplåtelseformOption.find(
               (option) => option.value === realEstate.contractType
             )}
@@ -288,11 +286,9 @@ function AddObject() {
             }
           />
         </div>
-        {/*--------------- end fastighet info --------------*/}
-        {/*-------------- strat agent info ------------------*/}
-        <div className="agent-input-wrapper ">
+        {/* Agent info */}
+        <div className="agent-input-wrapper">
           <hr />
-          {/*fixa sen*/}
           <h3>Mäklare</h3>
           <input
             type="text"
@@ -323,7 +319,6 @@ function AddObject() {
             onChange={handleAgentInputChange}
           />
         </div>
-        {/*-------------- end agent info ------------------*/}
       </section>
       {error && <p className="add-object-error">{error}</p>}
       <div className="add-object-submit-btn">

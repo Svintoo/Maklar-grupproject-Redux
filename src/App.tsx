@@ -18,6 +18,7 @@ function App() {
 
       <CardsWrapper>
         <FastighetsCard />
+        {/* <FastighetsCard />
         <FastighetsCard />
         <FastighetsCard />
         <FastighetsCard />
@@ -25,8 +26,7 @@ function App() {
         <FastighetsCard />
         <FastighetsCard />
         <FastighetsCard />
-        <FastighetsCard />
-        <FastighetsCard />
+        <FastighetsCard /> */}
       </CardsWrapper>
 
       <Footer />
