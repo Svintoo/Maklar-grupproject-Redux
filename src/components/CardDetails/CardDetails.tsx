@@ -154,7 +154,6 @@ function CardDetails({ fastighet, handleDelete }: CardDetailsProps) {
       {isEditVisible && (
         <Overlay handleCloseForm={handleCloseEdit}>
           <div className="card card-details">
-            {/* Rest of the component code */}
             {isEditVisible && (
               <EditObject
                 objectId={fastighet.id}
