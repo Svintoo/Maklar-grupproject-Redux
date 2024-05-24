@@ -1,6 +1,6 @@
 import "./CardDetails.css";
 import "../FastighetsCards/FastighetsCard.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   MdArrowBackIosNew,
   MdArrowForwardIos,
@@ -11,6 +11,7 @@ import BtnMedIcon from "../Buttons/BtnMedIkon";
 import CardMäklare from "../CardMäklare/CardMäklare";
 import { RealEstate } from "../../interfaces/Interfaces";
 import Overlay from "../Overlay/Overlay";
+import { AuthContext } from "../Context/AuthContext";
 
 interface CardDetailsProps {
   fastighet: RealEstate;
@@ -18,8 +19,13 @@ interface CardDetailsProps {
 }
 
 function CardDetails({ fastighet, handleDelete }: CardDetailsProps) {
-  const [currentImage, setCurrentImage] = useState(0);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const authContext = useContext(AuthContext);
+  const [currentImage, setCurrentImage] = useState(0);
+  if (!authContext) {
+    throw new Error("AuthContext must be used within an AuthProvider");
+  }
+  const { isLogged } = authContext;
 
   const nextImage = () => {
     setCurrentImage((prevIndex) => (prevIndex + 1) % fastighet.images.length);
@@ -30,9 +36,9 @@ function CardDetails({ fastighet, handleDelete }: CardDetailsProps) {
       prevIndex === 0 ? fastighet.images.length - 1 : prevIndex - 1
     );
   };
-  const handleOpenModal = () => {
-    setIsModalVisible(true);
-  };
+  // const handleOpenModal = () => {
+  //   setIsModalVisible(true);
+  // };
 
   const handleCloseModal = () => {
     setIsModalVisible(false);
@@ -104,14 +110,16 @@ function CardDetails({ fastighet, handleDelete }: CardDetailsProps) {
               address={fastighet.agent.address}
             />
           </div>
-          <footer className="details-footer">
-            <BtnMedIcon icon={<MdOutlineModeEdit />} title={"Redigera"} />
-            <BtnMedIcon
-              onClick={handleOpenModal}
-              icon={<MdRestoreFromTrash style={{ color: "red" }} />}
-              title={"Radera"}
-            />
-          </footer>
+
+          {isLogged && (
+            <footer className="details-footer">
+              <BtnMedIcon icon={<MdOutlineModeEdit />} title={"Redigera"} />
+              <BtnMedIcon
+                icon={<MdRestoreFromTrash style={{ color: "red" }} />}
+                title={"Radera"}
+              />
+            </footer>
+          )}
         </div>
       </div>
       {isModalVisible && (
