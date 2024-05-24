@@ -28,7 +28,7 @@ function App() {
           <FastighetsCard />
           <FastighetsCard />
         </CardsWrapper>
-        <Footer />\
+        <Footer />
       </AuthProvider>
     </>
   );
