@@ -21,24 +21,20 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 5%;
-  background: linear-gradient(
-    to top,
-    #65e2ff 30%,
-    #88e0eaf5 50%,
-    #b9f2ffd4 70%
-  );
-  animation: wave-animation 0.8s infinite linear alternate;
-}
-@keyframes wave-animation {
-  0% {
-    transform: translateY(0px);
-  }
-  100% {
-    transform: translateY(-5px);
-  }
+  height: 10%;
+  background: linear-gradient(to top, #65e2ff 30%, #b9f2ff00 70%);
+  background-size: 100% 200%;
+  animation: wave-animation 2.5s infinite linear alternate;
 }
 
+@keyframes wave-animation {
+  0% {
+    background-position: 0 50%;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
 .hero_content > img {
   max-height: 90vh;
 }
