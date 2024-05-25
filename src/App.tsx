@@ -10,7 +10,6 @@ function App() {
   return (
     <>
       <Hero />
-
       <SearchFilter />
       <CardsWrapper>
         <FastighetsCard />

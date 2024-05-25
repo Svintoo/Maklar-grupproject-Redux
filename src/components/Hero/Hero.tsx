@@ -8,6 +8,7 @@ const Hero = () => {
       <Header />
       <section className="hero_container">
         <div className="hero_content">
+          <div className="wave"></div>
           <img src={img3} alt="" />
           <p>
             Vi hjälper dig att hitta ditt <em>drömhus</em>
