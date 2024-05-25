@@ -79,7 +79,7 @@ function AddObject() {
       await addDoc(collection(db, "fastigheter"), realEstateData);
 
       setError(null);
-      console.log(realEstateData);
+      // console.log(realEstateData);
       setRealEstate(initialState);
       setSelectedCategory(null);
       setFiles([]);
