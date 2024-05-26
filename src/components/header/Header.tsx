@@ -37,7 +37,9 @@ const Header: React.FC = () => {
       </header>
       {isModalVisible && (
         <Overlay handleCloseForm={handleCloseModal}>
-          <SigninPage handleCloseForm={handleCloseModal} />
+          <div className="card card-details">
+            <SigninPage handleCloseForm={handleCloseModal} />
+          </div>
         </Overlay>
       )}
     </>

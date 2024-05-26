@@ -69,7 +69,7 @@ function FastighetsCard() {
   };
 
   const fastighetCards = fastighets.map((fastighet, index) => (
-    <article className="card" key={fastighet.id}>
+    <article className=" card card-fastighet" key={fastighet.id}>
       <div className="img-wrapper">
         <img src={fastighet.images[currentImage[index]]} alt="Property" />
         <div className="arrow-button-wrapper">
