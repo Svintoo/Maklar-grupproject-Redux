@@ -1,0 +1,8 @@
+/* styles for user_view component */
+.user_view_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
