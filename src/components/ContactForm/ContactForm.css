@@ -1,0 +1,35 @@
+.contact_form_container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid grey;
+}
+
+.contact_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin-bottom: 2rem;
+}
+
+.contact_form textarea {
+  padding: 0.7rem;
+  margin: 0.7rem auto;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 1px 3px 3px 0px darkgrey;
+  width: 21rem;
+  font-size: 1.2rem;
+  outline: none;
+}
+
+.contact_form button {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
