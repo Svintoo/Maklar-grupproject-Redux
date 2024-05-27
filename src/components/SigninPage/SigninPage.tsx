@@ -1,15 +1,32 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "./SigninPage.css";
 import { FaSignInAlt, FaSignOutAlt, FaPlusCircle } from "react-icons/fa";
 import logo from "../../assets/imgs/logo-mäklare.png";
 import BtnMedIcon from "../Buttons/BtnMedIkon";
-import { createUser, signInUser, signOutUser } from "../../firebase/SignIn";
+import { createUser, signOutUser } from "../../firebase/SignIn";
+import { AuthContext } from "../Context/AuthContext";
+import { auth } from "../../main";
+import { signInWithEmailAndPassword } from "firebase/auth";
+// import { signInWithEmailAndPassword } from "firebase/auth";
+interface SigninProps {
+  handleCloseForm: () => void;
+}
 
-const SigninPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLogged, setIsLogged] = useState(false);
+const SigninPage = ({ handleCloseForm }: SigninProps) => {
+  const authContext = useContext(AuthContext);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
+
+  if (!authContext) {
+    throw new Error("AuthContext must be used within an AuthProvider");
+  }
+  const { isLogged, setIsLogged } = authContext;
+  // useEffect(() => {
+  //   if (isLogged) {
+  //     handleCloseForm();
+  //   }
+  // }, [isLogged, handleCloseForm]);
 
   const handleSignIn = async () => {
     try {
@@ -19,12 +36,15 @@ const SigninPage = () => {
       } else {
         setError(null);
       }
-      await signInUser(email, password);
-      setIsLogged(true);
       setEmail("");
       setPassword("");
+      // await signInUser(email, password);
+      await signInWithEmailAndPassword(auth, email, password);
+
+      setIsLogged(true);
+      handleCloseForm();
     } catch (error) {
-      console.error("Error signing in:");
+      setError("ُE-mail eller lösenord är felaktigt");
     }
   };
 
@@ -32,13 +52,14 @@ const SigninPage = () => {
     try {
       await createUser(email, password);
     } catch (error) {
-      console.error("Error creating user:");
+      setError("Fel vid skapande av konto");
     }
   };
 
   const handleSignOut = async () => {
     await signOutUser();
     setIsLogged(false);
+    handleCloseForm();
   };
 
   return (

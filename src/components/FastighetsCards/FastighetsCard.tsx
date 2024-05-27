@@ -1,76 +1,127 @@
-import { useState } from "react";
-import "./FastighetsCard.css";
-import img1 from "../../assets/imgs/clay-banks-hC2QBywnLd0-unsplash.jpg";
-import img2 from "../../assets/imgs/spacejoy-YI2YkyaREHk-unsplash.jpg";
-import img3 from "../../assets/imgs/valentina-locatelli-P8bsrm8KbM0-unsplash.jpg";
-import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
-import BtnSvart from "../Buttons/BtnSvart";
+import { useEffect, useState } from "react";
+import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
+import { db } from "../../main";
+import { RealEstate } from "../../interfaces/Interfaces";
 import CardDetails from "../CardDetails/CardDetails";
 import Overlay from "../Overlay/Overlay";
-
-const images: string[] = [img1, img2, img3];
+import BtnSvart from "../Buttons/BtnSvart";
+import CardsWrapper from "./CardsWrapper";
+import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 
 function FastighetsCard() {
-  const [currentImage, setCurrentImage] = useState(0);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [fastighets, setFastighets] = useState<RealEstate[]>([]);
+  const [selectedFastighetId, setSelectedFastighetId] = useState<string | null>(
+    null
+  );
+  const [currentImage, setCurrentImage] = useState<number[]>([0]);
 
-  const nextImage = () => {
-    setCurrentImage((prevIndex) => (prevIndex + 1) % images.length);
-  };
-
-  const prevImage = () => {
-    setCurrentImage((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+  useEffect(() => {
+    const unsubscribe = onSnapshot(
+      collection(db, "fastigheter"),
+      (snapshot) => {
+        const fastighetsList = snapshot.docs.map((doc) => ({
+          ...(doc.data() as RealEstate),
+          id: doc.id,
+        }));
+        setFastighets(fastighetsList);
+        setCurrentImage(new Array(fastighetsList.length).fill(0));
+      }
     );
+    return () => unsubscribe();
+  }, []);
+
+  const handleDelete = async (id: string) => {
+    await deleteDoc(doc(db, "fastigheter", id));
+    handleCloseModal();
   };
 
-  const handleOpenModal = () => {
+  const handleOpenModal = (id: string) => {
+    setSelectedFastighetId(id);
     setIsModalVisible(true);
   };
 
   const handleCloseModal = () => {
     setIsModalVisible(false);
+    setSelectedFastighetId(null);
   };
+
+  const nextImage = (index: number) => {
+    setCurrentImage((prevIndexes) =>
+      prevIndexes.map((currentIndex, i) =>
+        i === index
+          ? (currentIndex + 1) % fastighets[index].images.length
+          : currentIndex
+      )
+    );
+  };
+
+  const prevImage = (index: number) => {
+    setCurrentImage((prevIndexes) =>
+      prevIndexes.map((currentIndex, i) =>
+        i === index
+          ? currentIndex === 0
+            ? fastighets[index].images.length - 1
+            : currentIndex - 1
+          : currentIndex
+      )
+    );
+  };
+
+  const fastighetCards = fastighets.map((fastighet, index) => (
+    <article className="card" key={fastighet.id}>
+      <div className="img-wrapper">
+        <img src={fastighet.images[currentImage[index]]} alt="Property" />
+        <div className="arrow-button-wrapper">
+          <div className="arrow-button left-arrow">
+            <button onClick={() => prevImage(index)}>
+              <MdArrowBackIosNew />
+            </button>
+          </div>
+          <div className="arrow-button right-arrow">
+            <button onClick={() => nextImage(index)}>
+              <MdArrowForwardIos />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="box">
+        <header className="card-fastighets">
+          <h2>{fastighet.address}</h2>
+          <p className="sub-title">{fastighet.place}</p>
+          <p>{fastighet.price}kr</p>
+        </header>
+
+        <div className="area">
+          <p>{fastighet.livingArea}m²</p>
+          <p>{fastighet.rooms} rum</p>
+        </div>
+        <footer className="visas">
+          <small>VISAS: {fastighet.showing}</small>
+          <BtnSvart
+            onClick={() => fastighet.id && handleOpenModal(fastighet.id)}
+            title="Fler Detaljer"
+          />
+        </footer>
+      </div>
+    </article>
+  ));
+  const selectedFastighet = fastighets.find(
+    (fastighet) => fastighet.id === selectedFastighetId
+  );
 
   return (
     <>
-      <article className="card">
-        <div className="img-wrapper">
-          <img src={images[currentImage]} alt="Property" />
-          <div className="arrow-button-wrapper">
-            <div className="arrow-button left-arrow">
-              <button onClick={prevImage}>
-                <MdArrowBackIosNew />
-              </button>
-            </div>
-            <div className="arrow-button right-arrow">
-              <button onClick={nextImage}>
-                <MdArrowForwardIos />
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div className="box">
-          <header className="card-fastighets">
-            <h2>Vattenvägen1</h2>
-            <p className="sub-title">valsta, sigtuna kommun</p>
-            <p>1 145 000 kr</p>
-          </header>
-
-          <div className="area">
-            <p>105+55 m²</p>
-            <p>3 rum</p>
-          </div>
-          <footer className="visas">
-            <small>VISAS:sön 12/5</small>
-            <BtnSvart onClick={handleOpenModal} title="Fler Detaljer" />
-          </footer>
-        </div>
-      </article>
-      {isModalVisible && (
+      <CardsWrapper>{fastighetCards}</CardsWrapper>
+      {isModalVisible && selectedFastighet && (
         <Overlay handleCloseForm={handleCloseModal}>
-          <CardDetails />
+          <CardDetails
+            fastighet={selectedFastighet}
+            handleDelete={() =>
+              selectedFastighet.id && handleDelete(selectedFastighet.id)
+            }
+          />
         </Overlay>
       )}
     </>

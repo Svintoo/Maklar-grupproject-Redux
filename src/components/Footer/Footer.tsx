@@ -33,7 +33,7 @@ function footer() {
             </p>
           </div>
 
-          <div className="footer-Quick-Link">
+          {/* <div className="footer-Quick-Link">
             <h3>Quick Link</h3>
             <ul>
               <li>
@@ -49,7 +49,7 @@ function footer() {
                 <span className="hover">Contact </span>
               </li>
             </ul>
-          </div>
+          </div> */}
 
           <div className="footer-Contact">
             <h3>Contact info</h3>

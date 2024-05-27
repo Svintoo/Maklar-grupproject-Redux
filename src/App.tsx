@@ -14,20 +14,8 @@ function App() {
   return (
     <>
       <Hero />
-
-      {/* <SigninPage /> */}
       <SearchFilter />
-
       <CardsWrapper>
-        <FastighetsCard />
-        <FastighetsCard />
-        <FastighetsCard />
-        <FastighetsCard />
-        <FastighetsCard />
-        <FastighetsCard />
-        <FastighetsCard />
-        <FastighetsCard />
-        <FastighetsCard />
         <FastighetsCard />
       </CardsWrapper>
       <UserView />
