@@ -1,7 +1,6 @@
 import "./SearchFilter.css";
 import { useContext, useState } from "react";
 import BtnMedIcon from "../Buttons/BtnMedIkon";
-// import { FaFilter } from "react-icons/fa";
 import AddObject from "../AddObject/AddObject";
 import Overlay from "../Overlay/Overlay";
 import { IoAddCircleOutline } from "react-icons/io5";
@@ -75,7 +74,9 @@ function SearchFilter() {
 
       {isModalVisible && (
         <Overlay handleCloseForm={handleCloseModal}>
-          <AddObject />
+          <div className="card card-details">
+            <AddObject />
+          </div>
         </Overlay>
       )}
     </>

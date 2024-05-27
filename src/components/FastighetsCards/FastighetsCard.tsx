@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import "./FastighetsCard.css";
-import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
-import BtnSvart from "../Buttons/BtnSvart";
-import CardDetails from "../CardDetails/CardDetails";
-import Overlay from "../Overlay/Overlay";
 import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 import { db } from "../../main";
 import { RealEstate } from "../../interfaces/Interfaces";
+import CardDetails from "../CardDetails/CardDetails";
+import Overlay from "../Overlay/Overlay";
+import BtnSvart from "../Buttons/BtnSvart";
+import CardsWrapper from "./CardsWrapper";
+import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 
 function FastighetsCard() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -16,7 +16,6 @@ function FastighetsCard() {
   );
   const [currentImage, setCurrentImage] = useState<number[]>([0]);
 
-  // Hämta dat varje gång datan förändras
   useEffect(() => {
     const unsubscribe = onSnapshot(
       collection(db, "fastigheter"),
@@ -26,7 +25,7 @@ function FastighetsCard() {
           id: doc.id,
         }));
         setFastighets(fastighetsList);
-        setCurrentImage(new Array(fastighetsList.length).fill(0)); // Initialize currentImage array
+        setCurrentImage(new Array(fastighetsList.length).fill(0));
       }
     );
     return () => unsubscribe();
@@ -70,7 +69,7 @@ function FastighetsCard() {
   };
 
   const fastighetCards = fastighets.map((fastighet, index) => (
-    <article className="card" key={fastighet.id}>
+    <article className=" card card-fastighet" key={fastighet.id}>
       <div className="img-wrapper">
         <img src={fastighet.images[currentImage[index]]} alt="Property" />
         <div className="arrow-button-wrapper">
@@ -111,9 +110,10 @@ function FastighetsCard() {
   const selectedFastighet = fastighets.find(
     (fastighet) => fastighet.id === selectedFastighetId
   );
+
   return (
     <>
-      {fastighetCards}
+      <CardsWrapper>{fastighetCards}</CardsWrapper>
       {isModalVisible && selectedFastighet && (
         <Overlay handleCloseForm={handleCloseModal}>
           <CardDetails

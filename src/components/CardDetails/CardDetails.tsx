@@ -12,6 +12,7 @@ import CardMäklare from "../CardMäklare/CardMäklare";
 import { RealEstate } from "../../interfaces/Interfaces";
 import Overlay from "../Overlay/Overlay";
 import { AuthContext } from "../Context/AuthContext";
+import EditObject from "../EditObject/EditObject";
 
 interface CardDetailsProps {
   fastighet: RealEstate;
@@ -20,6 +21,7 @@ interface CardDetailsProps {
 
 function CardDetails({ fastighet, handleDelete }: CardDetailsProps) {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isEditVisible, setIsEditVisible] = useState(false);
   const authContext = useContext(AuthContext);
   const [currentImage, setCurrentImage] = useState(0);
   if (!authContext) {
@@ -43,6 +45,14 @@ function CardDetails({ fastighet, handleDelete }: CardDetailsProps) {
   const handleCloseModal = () => {
     setIsModalVisible(false);
   };
+  const handleEditClick = () => {
+    setIsEditVisible(true);
+  };
+
+  const handleCloseEdit = () => {
+    setIsEditVisible(false);
+  };
+
   const confirmDelete = () => {
     handleDelete();
     setIsModalVisible(false);
@@ -52,7 +62,7 @@ function CardDetails({ fastighet, handleDelete }: CardDetailsProps) {
     setIsModalVisible(false);
   };
   return (
-    <article className="container">
+    <article>
       <div className="card card-details">
         <div className="img-wrapper">
           <img src={fastighet.images[currentImage]} alt="Property" />
@@ -113,7 +123,11 @@ function CardDetails({ fastighet, handleDelete }: CardDetailsProps) {
 
           {isLogged && (
             <footer className="details-footer">
-              <BtnMedIcon icon={<MdOutlineModeEdit />} title={"Redigera"} />
+              <BtnMedIcon
+                icon={<MdOutlineModeEdit />}
+                title={"Redigera"}
+                onClick={handleEditClick}
+              />
               <BtnMedIcon
                 onClick={handleOpenModal}
                 icon={<MdRestoreFromTrash style={{ color: "red" }} />}
@@ -134,6 +148,19 @@ function CardDetails({ fastighet, handleDelete }: CardDetailsProps) {
               </div>
             </div>
           </>
+        </Overlay>
+      )}
+
+      {isEditVisible && (
+        <Overlay handleCloseForm={handleCloseEdit}>
+          <div className=" card-details">
+            {isEditVisible && (
+              <EditObject
+                objectId={fastighet.id}
+                handleCloseForm={handleCloseEdit}
+              />
+            )}
+          </div>
         </Overlay>
       )}
     </article>
