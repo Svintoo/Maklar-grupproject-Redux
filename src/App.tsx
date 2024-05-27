@@ -1,6 +1,5 @@
 import "./App.css";
 
-import CardsWrapper from "./components/FastighetsCards/CardsWrapper";
 import FastighetsCard from "./components/FastighetsCards/FastighetsCard";
 import Footer from "./components/Footer/Footer";
 import Hero from "./components/Hero/Hero";
@@ -15,10 +14,11 @@ function App() {
     <>
       <Hero />
       <SearchFilter />
-      <CardsWrapper>
-        <FastighetsCard />
-      </CardsWrapper>
+
+      <FastighetsCard />
+
       <UserView />
+
       <Footer />
     </>
   );

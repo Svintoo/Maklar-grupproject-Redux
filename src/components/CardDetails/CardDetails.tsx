@@ -62,7 +62,7 @@ function CardDetails({ fastighet, handleDelete }: CardDetailsProps) {
     setIsModalVisible(false);
   };
   return (
-    <article className="container">
+    <article>
       <div className="card card-details">
         <div className="img-wrapper">
           <img src={fastighet.images[currentImage]} alt="Property" />
@@ -153,7 +153,7 @@ function CardDetails({ fastighet, handleDelete }: CardDetailsProps) {
 
       {isEditVisible && (
         <Overlay handleCloseForm={handleCloseEdit}>
-          <div className="card card-details">
+          <div className=" card-details">
             {isEditVisible && (
               <EditObject
                 objectId={fastighet.id}

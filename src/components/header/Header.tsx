@@ -19,8 +19,8 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <header className="header_container">
-        <div className="items_container">
+      <header className="header_container ">
+        <div className="items_container  ">
           <div className="logo_containter">
             <h1 className="logo">Bostadsfynd</h1>
           </div>
@@ -34,12 +34,14 @@ const Header: React.FC = () => {
             </div>
           </div>
         </div>
-        {isModalVisible && (
-          <Overlay handleCloseForm={handleCloseModal}>
-            <SigninPage handleCloseForm={handleCloseModal} />
-          </Overlay>
-        )}
       </header>
+      {isModalVisible && (
+        <Overlay handleCloseForm={handleCloseModal}>
+          <div className="card card-details">
+            <SigninPage handleCloseForm={handleCloseModal} />
+          </div>
+        </Overlay>
+      )}
     </>
   );
 };

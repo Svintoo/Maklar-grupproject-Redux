@@ -8,12 +8,13 @@
 
 .card {
   box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.2);
-  /* width: 80%; */
   border: 1.5px solid rgb(213, 236, 244);
   border-radius: 12px;
   transition: 0.3s;
 }
-
+.card-fastighet {
+  width: 80%;
+}
 .card:hover {
   border: 2px solid rgb(156 207 225);
   scale: 1.03;
@@ -53,9 +54,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 100%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   cursor: pointer;
+  background-color: #0000005e;
 }
 
 .arrow-button button {
@@ -127,7 +130,7 @@ footer.visas button {
 }
 
 @media screen and (min-width: 769px) {
-  .card {
+  .card-fastighet {
     width: 45%;
   }
 
@@ -148,7 +151,7 @@ footer.visas button {
 }
 
 @media screen and (min-width: 1300px) {
-  .card {
+  .card-fastighet {
     width: 32%;
   }
   .cards-wrapper {

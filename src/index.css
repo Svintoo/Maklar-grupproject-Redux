@@ -116,4 +116,7 @@ input:focus-visible {
   .container {
     width: 95%;
   }
+  input {
+    width: 18rem;
+  }
 }
