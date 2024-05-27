@@ -79,7 +79,7 @@ function AddObject() {
       await addDoc(collection(db, "fastigheter"), realEstateData);
 
       setError(null);
-      // console.log(realEstateData);
+      console.log(realEstateData);
       setRealEstate(initialState);
       setSelectedCategory(null);
       setFiles([]);
@@ -112,6 +112,17 @@ function AddObject() {
         [name]: value,
       });
     }
+  };
+
+  const handleAgentInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setRealEstate({
+      ...realEstate,
+      agent: {
+        ...realEstate.agent,
+        [name]: value,
+      },
+    });
   };
 
   const handleDeleteImage = (index: number) => {
@@ -171,17 +182,6 @@ function AddObject() {
         showing: "",
       });
     }
-  };
-
-  const handleAgentInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setRealEstate({
-      ...realEstate,
-      agent: {
-        ...realEstate.agent,
-        [name]: value,
-      },
-    });
   };
 
   return (

@@ -57,36 +57,68 @@ const EditObject = ({ objectId, handleCloseForm }: EditObjectProps) => {
   ) => {
     const { name, value } = e.target;
 
-    if (
-      name === "name" ||
-      name === "mobile" ||
-      name === "mail" ||
-      name === "address"
-    ) {
-      // Handle agent input change
-      setRealEstate((prevState) =>
-        prevState
-          ? {
-              ...prevState,
-              agent: {
-                ...prevState.agent,
-                [name]: value,
-              },
-            }
-          : null
-      );
+    if (e.target instanceof HTMLInputElement && e.target.type === "file") {
+      const selectedFiles = e.target.files;
+      if (selectedFiles) {
+        const fileArray = Array.from(selectedFiles);
+        setFiles(fileArray);
+        const urls = fileArray.map((file) => URL.createObjectURL(file));
+        setUploadedImageUrls(urls);
+      }
     } else {
-      // Handle other input change
-      setRealEstate((prevState) =>
-        prevState
-          ? {
-              ...prevState,
-              [name]: value,
-            }
-          : null
-      );
+      setRealEstate({
+        ...realEstate,
+        [name]: value,
+      });
     }
   };
+
+  const handleAgentInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setRealEstate({
+      ...realEstate,
+      agent: {
+        ...realEstate.agent,
+        [name]: value,
+      },
+    });
+  };
+
+  // const handleInputChange = (
+  //   e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  // ) => {
+  //   const { name, value } = e.target;
+
+  //   if (
+  //     name === "name" ||
+  //     name === "mobile" ||
+  //     name === "mail" ||
+  //     name === "address"
+  //   ) {
+  //     // Handle agent input change
+  //     setRealEstate((prevState) =>
+  //       prevState
+  //         ? {
+  //             ...prevState,
+  //             agent: {
+  //               ...prevState.agent,
+  //               [name]: value,
+  //             },
+  //           }
+  //         : null
+  //     );
+  //   } else {
+  //     // Handle other input change
+  //     setRealEstate((prevState) =>
+  //       prevState
+  //         ? {
+  //             ...prevState,
+  //             [name]: value,
+  //           }
+  //         : null
+  //     );
+  //   }
+  // };
 
   const handleSaveClick = async () => {
     try {
@@ -298,28 +330,28 @@ const EditObject = ({ objectId, handleCloseForm }: EditObjectProps) => {
               placeholder="Namn"
               name="name"
               value={realEstate.agent.name}
-              onChange={handleInputChange}
+              onChange={handleAgentInputChange}
             />
             <input
               type="text"
               placeholder="Mobil"
               name="mobile"
               value={realEstate.agent.mobile}
-              onChange={handleInputChange}
+              onChange={handleAgentInputChange}
             />
             <input
               type="email"
               placeholder="Mail"
               name="mail"
               value={realEstate.agent.mail}
-              onChange={handleInputChange}
+              onChange={handleAgentInputChange}
             />
             <input
               type="text"
               placeholder="Adress"
               name="address"
               value={realEstate.agent.address}
-              onChange={handleInputChange}
+              onChange={handleAgentInputChange}
             />
           </div>
         </section>
