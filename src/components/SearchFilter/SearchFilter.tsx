@@ -10,7 +10,11 @@ import FilterView from "../Filter/filter";
 import { CiFilter } from "react-icons/ci";
 import { AuthContext } from "../Context/AuthContext";
 
-function SearchFilter() {
+interface FilterViewProps {
+  setRangeValue: React.Dispatch<React.SetStateAction<number>>;
+}
+
+function SearchFilter({ setRangeValue }:FilterViewProps) {   // setRangeValue som prop
   const authContext = useContext(AuthContext);
 
   if (!authContext) {
@@ -58,7 +62,7 @@ function SearchFilter() {
         </div>
         {isfilterVisible && (
           <Overlay handleCloseForm={handleCloseModal2}>
-            <FilterView />
+            <FilterView setRangeValue={setRangeValue}/>
           </Overlay>
         )}
       </div>

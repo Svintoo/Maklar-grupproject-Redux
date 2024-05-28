@@ -8,7 +8,11 @@ import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 import { db } from "../../main";
 import { RealEstate } from "../../interfaces/Interfaces";
 
-function FastighetsCard() {
+interface FastighetsCardProps {
+  rangeValue: number;
+}
+
+function FastighetsCard({ rangeValue }: FastighetsCardProps) {  //props { rangeValue }: { rangeValue: number }
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [fastighets, setFastighets] = useState<RealEstate[]>([]);
   const [selectedFastighetId, setSelectedFastighetId] = useState<string | null>(
@@ -69,7 +73,11 @@ function FastighetsCard() {
     );
   };
 
-  const fastighetCards = fastighets.map((fastighet, index) => (
+  const filteredFastighets = fastighets.filter(
+    (fastighet) => Number(fastighet.rooms) === rangeValue
+  );
+
+  const fastighetCards = filteredFastighets.map((fastighet, index) => (
     <article className="card" key={fastighet.id}>
       <div className="img-wrapper">
         <img src={fastighet.images[currentImage[index]]} alt="Property" />
