@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./ContactForm.css";
 import "../Buttons/BtnSvart";
+import BtnSvart from "../Buttons/BtnSvart";
 
 interface FormState {
   name: string;
@@ -61,7 +62,7 @@ const ContactForm: React.FC = () => {
   };
   return (
     <div>
-      <form className="contact_form" onSubmit={handleSubmit}>
+      <form className="contact_form card" onSubmit={handleSubmit}>
         <h2>Contact us via email</h2>
         <input
           type="text"
@@ -96,9 +97,10 @@ const ContactForm: React.FC = () => {
         />
         {error && <p className="error">{error}</p>}
         {success && <p className="success">{success}</p>}
-        <button type="submit" className="btn-svart">
+        <BtnSvart title="Send Message" type="submit" />
+        {/* <button type="submit" className="btn-svart">
           Send Message
-        </button>
+        </button> */}
       </form>
     </div>
   );

@@ -5,10 +5,12 @@ import "./styles.css";
 
 const UserView = () => {
   return (
-    <div className="user_view_container">
+    <div className="user_view_container container">
       <AnyQuestions phoneNumber={""} email={""} />
-      <GetInTouch />
-      <ContactForm />
+      <div className="contact-wrapper ">
+        <GetInTouch />
+        <ContactForm />
+      </div>
     </div>
   );
 };

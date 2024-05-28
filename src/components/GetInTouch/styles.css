@@ -27,9 +27,15 @@
 /* styles for  get in touch (contact card) section */
 
 .intouch_section {
+  display: flex;
   text-align: center;
-  padding: 40px 20px;
   background-color: #f9f9f9;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  justify-content: space-around;
+  margin: 1rem 0;
+  min-height: 27rem;
 }
 .intouch_section h2 {
   padding-bottom: 5px;
@@ -45,7 +51,6 @@
 .card_container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-
+  justify-content: space-around;
   gap: 20px;
 }
