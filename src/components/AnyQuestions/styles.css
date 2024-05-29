@@ -4,7 +4,7 @@
   background-color: #000;
   color: #fff;
   border-radius: 8px;
-  max-width: 90%;
+  /* max-width: 90%; */
   height: 280px;
   display: flex;
   flex-direction: column;

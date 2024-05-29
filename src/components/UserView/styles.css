@@ -6,10 +6,11 @@
   align-items: center;
   width: 100%;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 820px) {
   .contact-wrapper {
+    width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     margin: 2rem auto;
   }
@@ -20,6 +21,9 @@
     max-width: 65%;
   }
   .contact_form {
+    width: 400px;
+  }
+  .intouch_section {
     width: 400px;
   }
 }
