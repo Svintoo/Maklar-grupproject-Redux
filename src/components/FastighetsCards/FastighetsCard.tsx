@@ -10,10 +10,15 @@ import { RealEstate } from "../../interfaces/Interfaces";
 import CardsWrapper from "./CardsWrapper";
 
 interface FastighetsCardProps {
-  rangeValue?: number;
+  filterOptions: {
+    rooms: number;
+    price: number;
+    area: number;
+    location: string;
+  };
 }
 
-function FastighetsCard({ rangeValue }: FastighetsCardProps) {
+function FastighetsCard({ filterOptions }: FastighetsCardProps) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [fastighets, setFastighets] = useState<RealEstate[]>([]);
   const [selectedFastighetId, setSelectedFastighetId] = useState<string | null>(
@@ -73,10 +78,23 @@ function FastighetsCard({ rangeValue }: FastighetsCardProps) {
     );
   };
 
-  const filteredFastighets = fastighets.filter(
-    (fastighet) =>
-      rangeValue === undefined || Number(fastighet.rooms) === rangeValue
-  );
+  const filteredFastighets = fastighets.filter((fastighet) => {
+    const matchesRooms =
+      Number(filterOptions.rooms) === 0 ||
+      Number(fastighet.rooms) === filterOptions.rooms;
+    const matchesPrice =
+      Number(filterOptions.price) === 0 ||
+      Number(fastighet.price) <= filterOptions.price;
+    const matchesArea =
+      Number(filterOptions.area) === 0 ||
+      Number(fastighet.livingArea) >= filterOptions.area;
+    const matchesLocation =
+      filterOptions.location === "" ||
+      fastighet.place
+        .toLowerCase()
+        .includes(filterOptions.location.toLowerCase());
+    return matchesRooms && matchesPrice && matchesArea && matchesLocation;
+  });
 
   const hasMatchingResults = filteredFastighets.length > 0;
 

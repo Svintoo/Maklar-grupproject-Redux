@@ -1,73 +1,73 @@
-import Select from "react-select";
-import {
-  RoomformOption,
-  RoomareaformOption,
-  PrisformOption,
-  PlatsformOption,
-} from "../AddObject/selectOptions";
+import { useState } from "react";
 import BtnMedIcon from "../Buttons/BtnMedIkon";
 import { MdOutlineAddTask } from "react-icons/md";
-import React, { useState } from "react";
+import "./filter.css";
 
-interface SearchFilterProps {
-  setRangeValue: React.Dispatch<React.SetStateAction<number>>;
+interface FilterViewProps {
+  setFilterOptions: React.Dispatch<
+    React.SetStateAction<{
+      rooms: number;
+      price: number;
+      area: number;
+      location: string;
+    }>
+  >;
   handleCloseForm: () => void;
 }
 
-function FilterView({ setRangeValue, handleCloseForm }: SearchFilterProps) {
-  // Ta emot setRangeValue som prop
-
-  const [rangeValue, setRangeValueLocal] = useState(1); //setRangeValue
+function FilterView({ setFilterOptions, handleCloseForm }: FilterViewProps) {
+  const [rooms, setRooms] = useState(0);
+  const [price, setPrice] = useState(0);
+  const [area, setArea] = useState(0);
+  const [location, setLocation] = useState("");
 
   const handleSave = () => {
-    const filterOptions = {
-      rooms: rangeValue,
-    };
-    console.log("Saved filter options:", filterOptions);
-    setRangeValue(rangeValue); // Uppdatera rangeValue i App-komponenten
+    setFilterOptions({ rooms, price, area, location });
     handleCloseForm();
   };
 
   return (
     <section className="filterview">
       <div>
+        <label htmlFor="rooms">Antal rum:</label>
         <input
-          type="range"
+          type="number"
           id="rooms"
-          name="rooms"
-          min="1"
-          max="10"
-          value={rangeValue}
-          onChange={(e) => setRangeValueLocal(Number(e.target.value))} //setRangeValue
+          value={rooms}
+          onChange={(e) => setRooms(Number(e.target.value))}
         />
-        <label htmlFor="rooms"> {rangeValue} Rooms</label>
       </div>
-
-      <Select
-        placeholder="Rooms"
-        options={RoomformOption}
-        className="add-object-select custom-select"
-      />
-      <Select
-        placeholder="Pris"
-        options={PrisformOption}
-        className="add-object-select custom-select"
-      />
-      <Select
-        placeholder="area"
-        options={RoomareaformOption}
-        className="add-object-select custom-select"
-      />
-      <Select
-        placeholder="Plats"
-        options={PlatsformOption}
-        className="add-object-select custom-select"
-      />
-
+      <div>
+        <label htmlFor="price">Maxpris:</label>
+        <input
+          type="number"
+          id="price"
+          value={price}
+          onChange={(e) => setPrice(Number(e.target.value))}
+        />
+      </div>
+      <div>
+        <label htmlFor="area">Minsta area (m²):</label>
+        <input
+          type="number"
+          id="area"
+          value={area}
+          onChange={(e) => setArea(Number(e.target.value))}
+        />
+      </div>
+      <div>
+        <label htmlFor="location">Plats:</label>
+        <input
+          type="text"
+          id="location"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+        />
+      </div>
       <div className="add-object-submit-btn">
         <BtnMedIcon
           type="submit"
-          title="spara"
+          title="Spara"
           onClick={handleSave}
           icon={<MdOutlineAddTask style={{ color: "green" }} />}
         />
