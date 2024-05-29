@@ -86,7 +86,7 @@ h4 {
 
 @media screen and (min-width: 769px) {
   .card-details {
-    width: 90%;
+    width: 80%;
     margin: 1.5rem auto;
   }
 
