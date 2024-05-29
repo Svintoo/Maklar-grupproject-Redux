@@ -1,15 +1,11 @@
 import { useState, useContext } from "react";
 import "./SigninPage.css";
-import { FaSignInAlt, FaSignOutAlt, FaPlusCircle } from "react-icons/fa";
+import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 import logo from "../../assets/imgs/logo-mäklare.png";
 import BtnMedIcon from "../Buttons/BtnMedIkon";
 import { AuthContext } from "../Context/AuthContext";
 import { auth } from "../../main";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-} from "firebase/auth";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 // import { signInWithEmailAndPassword } from "firebase/auth";
 interface SigninProps {
   handleCloseForm: () => void;
@@ -51,13 +47,13 @@ const SigninPage = ({ handleCloseForm }: SigninProps) => {
     }
   };
 
-  const handleCreateUser = async () => {
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-    } catch (error) {
-      setError("Fel vid skapande av konto");
-    }
-  };
+  // const handleCreateUser = async () => {
+  //   try {
+  //     await createUserWithEmailAndPassword(auth, email, password);
+  //   } catch (error) {
+  //     setError("Fel vid skapande av konto");
+  //   }
+  // };
 
   const handleSignOut = async () => {
     await signOut(auth);
@@ -83,12 +79,12 @@ const SigninPage = ({ handleCloseForm }: SigninProps) => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-
+      {/* 
       <BtnMedIcon
         title="Skapa Konto"
         icon={<FaPlusCircle />}
         onClick={handleCreateUser}
-      />
+      /> */}
       {error && <p style={{ color: "red", padding: ".5rem" }}>{error}</p>}
       {isLogged ? (
         <BtnMedIcon
