@@ -7,8 +7,11 @@ import { IoAddCircleOutline } from "react-icons/io5";
 import FilterView from "../Filter/filter";
 import { CiFilter } from "react-icons/ci";
 import { AuthContext } from "../Context/AuthContext";
+interface FilterViewProps {
+  setRangeValue: React.Dispatch<React.SetStateAction<number>>;
+}
 
-function SearchFilter() {
+function SearchFilter({ setRangeValue }: FilterViewProps) {
   const authContext = useContext(AuthContext);
 
   if (!authContext) {
@@ -56,7 +59,10 @@ function SearchFilter() {
         </div>
         {isfilterVisible && (
           <Overlay handleCloseForm={handleCloseModal2}>
-            <FilterView />
+            <FilterView
+              setRangeValue={setRangeValue}
+              handleCloseForm={handleCloseModal2}
+            />
           </Overlay>
         )}
       </div>

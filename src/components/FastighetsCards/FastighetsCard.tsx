@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
+import "./FastighetsCard.css";
+import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
+import BtnSvart from "../Buttons/BtnSvart";
+import CardDetails from "../CardDetails/CardDetails";
+import Overlay from "../Overlay/Overlay";
 import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 import { db } from "../../main";
 import { RealEstate } from "../../interfaces/Interfaces";
-import CardDetails from "../CardDetails/CardDetails";
-import Overlay from "../Overlay/Overlay";
-import BtnSvart from "../Buttons/BtnSvart";
 import CardsWrapper from "./CardsWrapper";
-import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 
-function FastighetsCard() {
+interface FastighetsCardProps {
+  rangeValue?: number;
+}
+
+function FastighetsCard({ rangeValue }: FastighetsCardProps) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [fastighets, setFastighets] = useState<RealEstate[]>([]);
   const [selectedFastighetId, setSelectedFastighetId] = useState<string | null>(
@@ -25,7 +30,7 @@ function FastighetsCard() {
           id: doc.id,
         }));
         setFastighets(fastighetsList);
-        setCurrentImage(new Array(fastighetsList.length).fill(0));
+        setCurrentImage(new Array(fastighetsList.length).fill(0)); // Initialize currentImage array
       }
     );
     return () => unsubscribe();
@@ -68,8 +73,17 @@ function FastighetsCard() {
     );
   };
 
-  const fastighetCards = fastighets.map((fastighet, index) => (
-    <article className=" card card-fastighet" key={fastighet.id}>
+  const filteredFastighets = fastighets.filter(
+    (fastighet) =>
+      rangeValue === undefined || Number(fastighet.rooms) === rangeValue
+  );
+
+  const hasMatchingResults = filteredFastighets.length > 0;
+
+  const fastighetCards = (
+    hasMatchingResults ? filteredFastighets : fastighets
+  ).map((fastighet, index) => (
+    <article className="card card-fastighet" key={fastighet.id}>
       <div className="img-wrapper">
         <img src={fastighet.images[currentImage[index]]} alt="Property" />
         <div className="arrow-button-wrapper">
@@ -107,12 +121,27 @@ function FastighetsCard() {
       </div>
     </article>
   ));
+
   const selectedFastighet = fastighets.find(
     (fastighet) => fastighet.id === selectedFastighetId
   );
 
   return (
     <>
+      <div>
+        {!hasMatchingResults && (
+          <p
+            style={{
+              textAlign: "center",
+              margin: "2rem",
+              fontSize: "1.2rem",
+              color: "red",
+            }}
+          >
+            Det finns inga fastigheter som matchar din filter
+          </p>
+        )}
+      </div>
       <CardsWrapper>{fastighetCards}</CardsWrapper>
       {isModalVisible && selectedFastighet && (
         <Overlay handleCloseForm={handleCloseModal}>

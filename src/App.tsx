@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "./App.css";
 import { AuthContext } from "./components/Context/AuthContext";
 
@@ -12,6 +12,7 @@ import UserView from "./components/UserView/UserView";
 // import SigninPage from "./components/SigninPage/SigninPage";
 
 function App() {
+  const [rangeValue, setRangeValue] = useState<number>(0);
   const authContext = useContext(AuthContext);
 
   if (!authContext) {
@@ -21,9 +22,9 @@ function App() {
   return (
     <>
       <Hero />
-      <SearchFilter />
+      <SearchFilter setRangeValue={setRangeValue} />
 
-      <FastighetsCard />
+      <FastighetsCard rangeValue={rangeValue} />
 
       {!isLogged && <UserView />}
 
