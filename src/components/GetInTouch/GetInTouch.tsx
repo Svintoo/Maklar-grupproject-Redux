@@ -30,7 +30,7 @@ const GetInTouch: React.FC = () => {
     },
   ];
   return (
-    <div className="intouch_section">
+    <div className="intouch_section card">
       <h2>Get In Touch</h2>
       <p className="card_desc">
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae,

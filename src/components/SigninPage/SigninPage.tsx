@@ -3,10 +3,13 @@ import "./SigninPage.css";
 import { FaSignInAlt, FaSignOutAlt, FaPlusCircle } from "react-icons/fa";
 import logo from "../../assets/imgs/logo-mäklare.png";
 import BtnMedIcon from "../Buttons/BtnMedIkon";
-import { createUser, signOutUser } from "../../firebase/SignIn";
 import { AuthContext } from "../Context/AuthContext";
 import { auth } from "../../main";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 // import { signInWithEmailAndPassword } from "firebase/auth";
 interface SigninProps {
   handleCloseForm: () => void;
@@ -50,14 +53,14 @@ const SigninPage = ({ handleCloseForm }: SigninProps) => {
 
   const handleCreateUser = async () => {
     try {
-      await createUser(email, password);
+      await createUserWithEmailAndPassword(auth, email, password);
     } catch (error) {
       setError("Fel vid skapande av konto");
     }
   };
 
   const handleSignOut = async () => {
-    await signOutUser();
+    await signOut(auth);
     setIsLogged(false);
     handleCloseForm();
   };
