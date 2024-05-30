@@ -21,9 +21,9 @@ const formatNumber = (num: number) => {
 };
 
 function FilterView({ setFilterOptions, handleCloseForm }: FilterViewProps) {
-  const [rooms, setRooms] = useState(1);
-  const [price, setPrice] = useState(7000);
-  const [area, setArea] = useState(20);
+  const [rooms, setRooms] = useState(0);
+  const [price, setPrice] = useState(0);
+  const [area, setArea] = useState(0);
   const [location, setLocation] = useState("");
 
   const handleSave = () => {
