@@ -24,7 +24,8 @@ function FastighetsCard({ filterOptions }: FastighetsCardProps) {
   const [selectedFastighetId, setSelectedFastighetId] = useState<string | null>(
     null
   );
-  const [currentImage, setCurrentImage] = useState<number[]>([0]);
+  const [currentImage, setCurrentImage] = useState<number[]>([]);
+  const [showMessage, setShowMessage] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -40,6 +41,37 @@ function FastighetsCard({ filterOptions }: FastighetsCardProps) {
     );
     return () => unsubscribe();
   }, []);
+
+  const filteredFastighets = fastighets.filter((fastighet) => {
+    const matchesRooms =
+      Number(filterOptions.rooms) === 0 ||
+      Number(fastighet.rooms) === filterOptions.rooms;
+    const matchesPrice =
+      Number(filterOptions.price) === 0 ||
+      Number(fastighet.price) <= filterOptions.price;
+    const matchesArea =
+      Number(filterOptions.area) === 0 ||
+      Number(fastighet.livingArea) >= filterOptions.area;
+    const matchesLocation =
+      filterOptions.location === "" ||
+      fastighet.place
+        .toLowerCase()
+        .includes(filterOptions.location.toLowerCase());
+    return matchesRooms && matchesPrice && matchesArea && matchesLocation;
+  });
+
+  const hasMatchingResults = filteredFastighets.length > 0;
+
+  useEffect(() => {
+    if (!hasMatchingResults) {
+      setShowMessage(true);
+      setTimeout(() => {
+        setShowMessage(false);
+      }, 2000);
+    } else {
+      setShowMessage(false);
+    }
+  }, [hasMatchingResults]);
 
   const handleDelete = async (id: string) => {
     await deleteDoc(doc(db, "fastigheter", id));
@@ -77,26 +109,6 @@ function FastighetsCard({ filterOptions }: FastighetsCardProps) {
       )
     );
   };
-
-  const filteredFastighets = fastighets.filter((fastighet) => {
-    const matchesRooms =
-      Number(filterOptions.rooms) === 0 ||
-      Number(fastighet.rooms) === filterOptions.rooms;
-    const matchesPrice =
-      Number(filterOptions.price) === 0 ||
-      Number(fastighet.price) <= filterOptions.price;
-    const matchesArea =
-      Number(filterOptions.area) === 0 ||
-      Number(fastighet.livingArea) >= filterOptions.area;
-    const matchesLocation =
-      filterOptions.location === "" ||
-      fastighet.place
-        .toLowerCase()
-        .includes(filterOptions.location.toLowerCase());
-    return matchesRooms && matchesPrice && matchesArea && matchesLocation;
-  });
-
-  const hasMatchingResults = filteredFastighets.length > 0;
 
   const fastighetCards = (
     hasMatchingResults ? filteredFastighets : fastighets
@@ -146,20 +158,18 @@ function FastighetsCard({ filterOptions }: FastighetsCardProps) {
 
   return (
     <>
-      <div>
-        {!hasMatchingResults && (
-          <p
-            style={{
-              textAlign: "center",
-              margin: "2rem",
-              fontSize: "1.2rem",
-              color: "red",
-            }}
-          >
-            Det finns inga fastigheter som matchar din filter
-          </p>
-        )}
-      </div>
+      {showMessage && (
+        <p
+          style={{
+            textAlign: "center",
+            margin: "2rem",
+            fontSize: "1.2rem",
+            color: "red",
+          }}
+        >
+          Det finns inga fastigheter som matchar din filter
+        </p>
+      )}
       <CardsWrapper>{fastighetCards}</CardsWrapper>
       {isModalVisible && selectedFastighet && (
         <Overlay handleCloseForm={handleCloseModal}>
