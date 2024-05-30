@@ -1,20 +1,31 @@
 import { useEffect, useState } from "react";
+import "./FastighetsCard.css";
+import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
+import BtnSvart from "../Buttons/BtnSvart";
+import CardDetails from "../CardDetails/CardDetails";
+import Overlay from "../Overlay/Overlay";
 import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 import { db } from "../../main";
 import { RealEstate } from "../../interfaces/Interfaces";
-import CardDetails from "../CardDetails/CardDetails";
-import Overlay from "../Overlay/Overlay";
-import BtnSvart from "../Buttons/BtnSvart";
 import CardsWrapper from "./CardsWrapper";
-import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 
-function FastighetsCard() {
+interface FastighetsCardProps {
+  filterOptions: {
+    rooms: number;
+    price: number;
+    area: number;
+    location: string;
+  };
+}
+
+function FastighetsCard({ filterOptions }: FastighetsCardProps) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [fastighets, setFastighets] = useState<RealEstate[]>([]);
   const [selectedFastighetId, setSelectedFastighetId] = useState<string | null>(
     null
   );
-  const [currentImage, setCurrentImage] = useState<number[]>([0]);
+  const [currentImage, setCurrentImage] = useState<number[]>([]);
+  const [showMessage, setShowMessage] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -25,11 +36,42 @@ function FastighetsCard() {
           id: doc.id,
         }));
         setFastighets(fastighetsList);
-        setCurrentImage(new Array(fastighetsList.length).fill(0));
+        setCurrentImage(new Array(fastighetsList.length).fill(0)); // Initialize currentImage array
       }
     );
     return () => unsubscribe();
   }, []);
+
+  const filteredFastighets = fastighets.filter((fastighet) => {
+    const matchesRooms =
+      Number(filterOptions.rooms) === 0 ||
+      Number(fastighet.rooms) === filterOptions.rooms;
+    const matchesPrice =
+      Number(filterOptions.price) === 0 ||
+      Number(fastighet.price) <= filterOptions.price;
+    const matchesArea =
+      Number(filterOptions.area) === 0 ||
+      Number(fastighet.livingArea) >= filterOptions.area;
+    const matchesLocation =
+      filterOptions.location === "" ||
+      fastighet.place
+        .toLowerCase()
+        .includes(filterOptions.location.toLowerCase());
+    return matchesRooms && matchesPrice && matchesArea && matchesLocation;
+  });
+
+  const hasMatchingResults = filteredFastighets.length > 0;
+
+  useEffect(() => {
+    if (!hasMatchingResults) {
+      setShowMessage(true);
+      setTimeout(() => {
+        setShowMessage(false);
+      }, 2000);
+    } else {
+      setShowMessage(false);
+    }
+  }, [hasMatchingResults]);
 
   const handleDelete = async (id: string) => {
     await deleteDoc(doc(db, "fastigheter", id));
@@ -68,8 +110,10 @@ function FastighetsCard() {
     );
   };
 
-  const fastighetCards = fastighets.map((fastighet, index) => (
-    <article className=" card card-fastighet" key={fastighet.id}>
+  const fastighetCards = (
+    hasMatchingResults ? filteredFastighets : fastighets
+  ).map((fastighet, index) => (
+    <article className="card card-fastighet" key={fastighet.id}>
       <div className="img-wrapper">
         <img src={fastighet.images[currentImage[index]]} alt="Property" />
         <div className="arrow-button-wrapper">
@@ -107,12 +151,25 @@ function FastighetsCard() {
       </div>
     </article>
   ));
+
   const selectedFastighet = fastighets.find(
     (fastighet) => fastighet.id === selectedFastighetId
   );
 
   return (
     <>
+      {showMessage && (
+        <p
+          style={{
+            textAlign: "center",
+            margin: "2rem",
+            fontSize: "1.2rem",
+            color: "red",
+          }}
+        >
+          Det finns inga fastigheter som matchar din filter
+        </p>
+      )}
       <CardsWrapper>{fastighetCards}</CardsWrapper>
       {isModalVisible && selectedFastighet && (
         <Overlay handleCloseForm={handleCloseModal}>

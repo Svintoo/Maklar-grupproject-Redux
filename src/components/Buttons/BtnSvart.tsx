@@ -5,6 +5,7 @@ interface BtnSvartProps {
   onClick?: () => void;
   title: string;
   className?: string;
+  type?: string;
 }
 
 const BtnSvart: React.FC<BtnSvartProps> = ({ title, onClick }) => {

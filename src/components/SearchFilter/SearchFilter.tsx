@@ -4,12 +4,22 @@ import BtnMedIcon from "../Buttons/BtnMedIkon";
 import AddObject from "../AddObject/AddObject";
 import Overlay from "../Overlay/Overlay";
 import { IoAddCircleOutline } from "react-icons/io5";
-
 import FilterView from "../Filter/filter";
 import { CiFilter } from "react-icons/ci";
 import { AuthContext } from "../Context/AuthContext";
 
-function SearchFilter() {
+interface FilterViewProps {
+  setFilterOptions: React.Dispatch<
+    React.SetStateAction<{
+      rooms: number;
+      price: number;
+      area: number;
+      location: string;
+    }>
+  >;
+}
+
+function SearchFilter({ setFilterOptions }: FilterViewProps) {
   const authContext = useContext(AuthContext);
 
   if (!authContext) {
@@ -18,9 +28,7 @@ function SearchFilter() {
   const { isLogged } = authContext;
 
   const [isModalVisible, setIsModalVisible] = useState(false);
-  //-----------------------------------filter
   const [isfilterVisible, setIsfilterVisible] = useState(false);
-  //-----------------------------------filter
 
   const handleOpenModal = () => {
     setIsModalVisible(true);
@@ -30,7 +38,6 @@ function SearchFilter() {
     setIsModalVisible(false);
   };
 
-  //-----------------------------------filter
   const handleOpenModal2 = () => {
     setIsfilterVisible(true);
   };
@@ -38,16 +45,14 @@ function SearchFilter() {
   const handleCloseModal2 = () => {
     setIsfilterVisible(false);
   };
-  //-----------------------------------filter
 
   return (
     <>
-      <div className=" search-filter-wrapper">
+      <div className="search-filter-wrapper">
         <div className="search-input">
           <input type="search" placeholder="Sök" />
         </div>
 
-        {/* //-----------------------------------filter */}
         <div className="Filter">
           <BtnMedIcon
             title="Filter"
@@ -57,11 +62,13 @@ function SearchFilter() {
         </div>
         {isfilterVisible && (
           <Overlay handleCloseForm={handleCloseModal2}>
-            <FilterView />
+            <FilterView
+              setFilterOptions={setFilterOptions}
+              handleCloseForm={handleCloseModal2}
+            />
           </Overlay>
         )}
       </div>
-      {/* //-----------------------------------filter */}
       {isLogged && (
         <div className="add-object-btn">
           <BtnMedIcon

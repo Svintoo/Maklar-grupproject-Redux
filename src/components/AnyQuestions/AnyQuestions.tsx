@@ -20,14 +20,14 @@ const AnyQuestions: React.FC<QuestionCardProps> = () => {
       </div>
 
       <div className="qContactInfo">
-        <p className="qContactItem">
+        <div className="qContactItem">
           <FaPhoneAlt className="qIcon" />
           <p>+467 335 89 67</p>
-        </p>
-        <p className="qContactItem">
-          <IoMdMail  className="qIcon" />
+        </div>
+        <div className="qContactItem">
+          <IoMdMail className="qIcon" />
           <p>bostadsfynd@lg.se</p>
-        </p>
+        </div>
       </div>
     </div>
   );
