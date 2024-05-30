@@ -11,12 +11,10 @@ interface QuestionCardProps {
 const AnyQuestions: React.FC<QuestionCardProps> = () => {
   return (
     <div className="q_container">
-      <h2>Have Any Question?</h2>
+      <h2>Har du frågor?</h2>
       <div className="q_text_container">
-        <p className="q_text">
-          Do not hesitate to give us a call. We are an expert team and we are
-          happy to talk to you.
-        </p>
+        <p>Vi ser fram emot att höra från dig!</p>
+        <p>Kontakta oss gärna om du har några frågor.</p>
       </div>
 
       <div className="qContactInfo">
