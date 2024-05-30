@@ -37,6 +37,7 @@ function FilterView({ setFilterOptions, handleCloseForm }: FilterViewProps) {
         <div className="filter-input-wrapper">
           <label htmlFor="rooms">Antal rum: {rooms}</label>
           <input
+            id="rooms"
             type="range"
             step={0.5}
             min={1}
