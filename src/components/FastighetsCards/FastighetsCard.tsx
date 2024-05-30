@@ -7,12 +7,18 @@ import Overlay from "../Overlay/Overlay";
 import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 import { db } from "../../main";
 import { RealEstate } from "../../interfaces/Interfaces";
+import CardsWrapper from "./CardsWrapper";
 
 interface FastighetsCardProps {
-  rangeValue: number;
+  filterOptions: {
+    rooms: number;
+    price: number;
+    area: number;
+    location: string;
+  };
 }
 
-function FastighetsCard({ rangeValue }: FastighetsCardProps) {  //props { rangeValue }: { rangeValue: number }
+function FastighetsCard({ filterOptions }: FastighetsCardProps) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [fastighets, setFastighets] = useState<RealEstate[]>([]);
   const [selectedFastighetId, setSelectedFastighetId] = useState<string | null>(
@@ -20,7 +26,6 @@ function FastighetsCard({ rangeValue }: FastighetsCardProps) {  //props { rangeV
   );
   const [currentImage, setCurrentImage] = useState<number[]>([0]);
 
-  // Hämta dat varje gång datan förändras
   useEffect(() => {
     const unsubscribe = onSnapshot(
       collection(db, "fastigheter"),
@@ -73,12 +78,30 @@ function FastighetsCard({ rangeValue }: FastighetsCardProps) {  //props { rangeV
     );
   };
 
-  const filteredFastighets = fastighets.filter(
-    (fastighet) => Number(fastighet.rooms) === rangeValue
-  );
+  const filteredFastighets = fastighets.filter((fastighet) => {
+    const matchesRooms =
+      Number(filterOptions.rooms) === 0 ||
+      Number(fastighet.rooms) === filterOptions.rooms;
+    const matchesPrice =
+      Number(filterOptions.price) === 0 ||
+      Number(fastighet.price) <= filterOptions.price;
+    const matchesArea =
+      Number(filterOptions.area) === 0 ||
+      Number(fastighet.livingArea) >= filterOptions.area;
+    const matchesLocation =
+      filterOptions.location === "" ||
+      fastighet.place
+        .toLowerCase()
+        .includes(filterOptions.location.toLowerCase());
+    return matchesRooms && matchesPrice && matchesArea && matchesLocation;
+  });
 
-  const fastighetCards = filteredFastighets.map((fastighet, index) => (
-    <article className="card" key={fastighet.id}>
+  const hasMatchingResults = filteredFastighets.length > 0;
+
+  const fastighetCards = (
+    hasMatchingResults ? filteredFastighets : fastighets
+  ).map((fastighet, index) => (
+    <article className="card card-fastighet" key={fastighet.id}>
       <div className="img-wrapper">
         <img src={fastighet.images[currentImage[index]]} alt="Property" />
         <div className="arrow-button-wrapper">
@@ -116,12 +139,28 @@ function FastighetsCard({ rangeValue }: FastighetsCardProps) {  //props { rangeV
       </div>
     </article>
   ));
+
   const selectedFastighet = fastighets.find(
     (fastighet) => fastighet.id === selectedFastighetId
   );
+
   return (
     <>
-      {fastighetCards}
+      <div>
+        {!hasMatchingResults && (
+          <p
+            style={{
+              textAlign: "center",
+              margin: "2rem",
+              fontSize: "1.2rem",
+              color: "red",
+            }}
+          >
+            Det finns inga fastigheter som matchar din filter
+          </p>
+        )}
+      </div>
+      <CardsWrapper>{fastighetCards}</CardsWrapper>
       {isModalVisible && selectedFastighet && (
         <Overlay handleCloseForm={handleCloseModal}>
           <CardDetails

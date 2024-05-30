@@ -114,6 +114,17 @@ function AddObject() {
     }
   };
 
+  const handleAgentInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setRealEstate({
+      ...realEstate,
+      agent: {
+        ...realEstate.agent,
+        [name]: value,
+      },
+    });
+  };
+
   const handleDeleteImage = (index: number) => {
     const newFiles = [...files];
     newFiles.splice(index, 1);
@@ -171,17 +182,6 @@ function AddObject() {
         showing: "",
       });
     }
-  };
-
-  const handleAgentInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setRealEstate({
-      ...realEstate,
-      agent: {
-        ...realEstate.agent,
-        [name]: value,
-      },
-    });
   };
 
   return (

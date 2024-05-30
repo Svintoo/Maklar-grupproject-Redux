@@ -1,6 +1,6 @@
 import {
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
+  // signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
 import { auth } from "../main";
@@ -20,21 +20,21 @@ export const createUser = async (email: string, password: string) => {
 };
 
 // Function to sign in a user with email and password
-export const signInUser = async (email: string, password: string) => {
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-    // console.log("User signed in:", userCredential.user);
-  } catch (error) {
-    // console.error("Error signing in:");
-  }
-};
+// export const signInUser = async (email: string, password: string) => {
+//   try {
+//     await signInWithEmailAndPassword(auth, email, password);
+//     // console.log("User signed in:", userCredential.user);
+//   } catch (error) {
+//     // console.error("Error signing in:");
+//   }
+// };
 
 // Function to sign out the current user
 export const signOutUser = async () => {
   try {
     await signOut(auth);
-    console.log("User signed out");
+    // console.log("User signed out");
   } catch (error) {
-    // console.error("Error signing out:", error.message);
+    console.error("Error signing out:", error);
   }
 };

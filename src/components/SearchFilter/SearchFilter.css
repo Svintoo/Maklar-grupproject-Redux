@@ -13,6 +13,7 @@
 }
 @media screen and (min-width: 500px) {
   .search-filter-wrapper {
+    position: relative;
     flex-direction: row;
     justify-content: space-around;
   }

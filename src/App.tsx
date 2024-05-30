@@ -1,39 +1,38 @@
+import { useContext, useState } from "react";
 import "./App.css";
-import { AuthProvider } from "./components/Context/AuthContext";
-import { useState } from "react"; //  här
-import CardsWrapper from "./components/FastighetsCards/CardsWrapper";
+
+import { AuthContext } from "./components/Context/AuthContext";
+
 import FastighetsCard from "./components/FastighetsCards/FastighetsCard";
 import Footer from "./components/Footer/Footer";
 import Hero from "./components/Hero/Hero";
 import SearchFilter from "./components/SearchFilter/SearchFilter";
-
-// import SigninPage from "./components/SigninPage/SigninPage";
+import UserView from "./components/UserView/UserView";
 
 function App() {
-  const [rangeValue, setRangeValue] = useState<number>(1); //  här
+  const [filterOptions, setFilterOptions] = useState({
+    rooms: 0,
+    price: 0,
+    area: 0,
+    location: "",
+  });
+  const authContext = useContext(AuthContext);
+
+  if (!authContext) {
+    throw new Error("AuthContext must be used within an AuthProvider");
+  }
+  const { isLogged } = authContext;
+
   return (
     <>
+      <Hero />
+      <SearchFilter setFilterOptions={setFilterOptions} />
 
-      <AuthProvider>
-        <Hero />
-        {/* <SigninPage /> */}
-        <SearchFilter setRangeValue={setRangeValue} /> {/* Skicka setRangeValue som prop */}
-        <CardsWrapper>
-          {/* //props */}
-          <FastighetsCard rangeValue={rangeValue} /> {/* Skicka rangeValue som prop */}
-          {/* <FastighetsCard />
-          <FastighetsCard />
-          <FastighetsCard />
-          <FastighetsCard />
-          <FastighetsCard />
-          <FastighetsCard />
-          <FastighetsCard />
-          <FastighetsCard />
-          <FastighetsCard /> */}
-        </CardsWrapper>
-        <Footer />
-      </AuthProvider>
+      <FastighetsCard filterOptions={filterOptions} />
 
+      {!isLogged && <UserView />}
+
+      <Footer />
     </>
   );
 }

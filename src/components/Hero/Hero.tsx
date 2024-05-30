@@ -6,33 +6,51 @@ const Hero = () => {
   return (
     <div className="hero_container">
       <Header />
-      <section
-        className="hero_container"
-        // style={{ backgroundImage: `url(${img1})` }}
-      >
+      <section className="hero_container">
         <div className="hero_content">
-          <img src={img3} alt="" />
+          <div className="wave ">
+            <svg
+              className="waves"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlnsXlink="http://www.w3.org/1999/xlink"
+              viewBox="0 24 150 28"
+              preserveAspectRatio="none"
+              shapeRendering="auto"
+            >
+              <defs>
+                <path
+                  id="gentle-wave"
+                  d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+                />
+              </defs>
+              <g className="parallax">
+                <use
+                  xlinkHref="#gentle-wave"
+                  x="48"
+                  y="0"
+                  fill="rgba(255,255,255,0.7)"
+                />
+                <use
+                  xlinkHref="#gentle-wave"
+                  x="48"
+                  y="3"
+                  fill="rgba(255,255,255,0.5)"
+                />
+                <use
+                  xlinkHref="#gentle-wave"
+                  x="48"
+                  y="5"
+                  fill="rgba(255,255,255,0.3)"
+                />
+                <use xlinkHref="#gentle-wave" x="48" y="7" fill="#fff" />
+              </g>
+            </svg>
+          </div>
+          <img src={img3} alt="hus" />
           <p>
             Vi hjälper dig att hitta ditt <em>drömhus</em>
           </p>
         </div>
-        {/* <div className="hero_content">
-        <div className="hero_form_container">
-          <h2 className="">Sök bostad:</h2>
-          <form className="hero_form">
-            <label>
-              <input
-                type="serch"
-                name="Find"
-                placeholder="Område, ort eller gata"
-              />
-            </label>
-            <button type="submit" className="search-btn">
-              Sök
-            </button>
-          </form>
-          </div>
-        </div> */}
       </section>
     </div>
   );

@@ -75,7 +75,8 @@ button:active {
   border-radius: 50%;
 }
 
-input {
+input,
+textarea {
   padding: 0.7rem;
   margin: 0.7rem auto;
   border-radius: 12px;
@@ -84,8 +85,12 @@ input {
   width: 21rem;
   font-size: 1.2rem;
 }
+textarea {
+  resize: vertical;
+}
 
-input:focus-visible {
+input:focus-visible,
+textarea:focus-visible {
   outline: none;
   box-shadow: inset -4px 3px 10px 0px #a1e3e8;
 }
@@ -115,5 +120,9 @@ input:focus-visible {
 @media (max-width: 768px) {
   .container {
     width: 95%;
+  }
+  input,
+  textarea {
+    width: 18rem;
   }
 }
