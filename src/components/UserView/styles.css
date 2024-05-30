@@ -30,7 +30,6 @@
 .intouch_section {
   display: flex;
   text-align: center;
-  background-color: #f9f9f9;
   flex-direction: column;
   align-items: center;
   padding: 1rem;
@@ -41,13 +40,14 @@
 }
 .intouch_section h2 {
   padding-bottom: 1rem;
-  font-size: 2.3rem;
+  font-size: 2rem;
+ 
 }
 
 .card_desc {
-  font-size: 14px;
+  font-size: 1rem;
   margin-bottom: 1.5rem;
-  color: #666;
+  color: #302f2f;
 }
 
 .card_container {
@@ -97,7 +97,6 @@
   padding-bottom: 1rem;
   line-height: 1.6;
 }
-
 
 .qContactInfo {
   font-size: 1rem;
