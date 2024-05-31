@@ -13,8 +13,10 @@ const AnyQuestions: React.FC<QuestionCardProps> = () => {
     <div className="q_container">
       <h2>Har du frågor?</h2>
       <div className="q_text_container">
-        <p>Vi ser fram emot att höra från dig!</p>
-        <p>Kontakta oss gärna om du har några frågor.</p>
+        <p>
+          Vi ser fram emot att höra från dig! Kontakta oss gärna om du har några
+          frågor.
+        </p>
       </div>
 
       <div className="qContactInfo">
