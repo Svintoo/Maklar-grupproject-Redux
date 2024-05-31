@@ -98,9 +98,6 @@ const ContactForm: React.FC = () => {
         {error && <p className="error">{error}</p>}
         {success && <p className="success">{success}</p>}
         <BtnSvart title="Skicka" type="submit" />
-        {/* <button type="submit" className="btn-svart">
-          Send Message
-        </button> */}
       </form>
     </div>
   );
