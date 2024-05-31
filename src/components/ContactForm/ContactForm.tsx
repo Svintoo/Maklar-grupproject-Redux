@@ -63,11 +63,11 @@ const ContactForm: React.FC = () => {
   return (
     <div>
       <form className="contact_form card" onSubmit={handleSubmit}>
-        <h2>Contact us via email</h2>
+        <h2>Kontakta oss</h2>
         <input
           type="text"
           name="name"
-          placeholder="Your Name"
+          placeholder="Ditt namn"
           value={formData.name}
           onChange={handleChange}
           className="input"
@@ -75,7 +75,7 @@ const ContactForm: React.FC = () => {
         <input
           type="email"
           name="email"
-          placeholder="Your Email"
+          placeholder="Din mejladress"
           value={formData.email}
           onChange={handleChange}
           className="input"
@@ -83,24 +83,21 @@ const ContactForm: React.FC = () => {
         <input
           type="text"
           name="subject"
-          placeholder="Subject"
+          placeholder="Ämne"
           value={formData.subject}
           onChange={handleChange}
           className="input"
         />
         <textarea
           name="message"
-          placeholder="Type your message here..."
+          placeholder="Skriv din fråga till oss..."
           value={formData.message}
           onChange={handleChange}
           className="textarea"
         />
         {error && <p className="error">{error}</p>}
         {success && <p className="success">{success}</p>}
-        <BtnSvart title="Send Message" type="submit" />
-        {/* <button type="submit" className="btn-svart">
-          Send Message
-        </button> */}
+        <BtnSvart title="Skicka" type="submit" />
       </form>
     </div>
   );

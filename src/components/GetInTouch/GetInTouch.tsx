@@ -32,10 +32,10 @@ const GetInTouch: React.FC = () => {
   // ];
   return (
     <div className="intouch_section card">
-      <h2>Get In Touch</h2>
+      <h2>Välja din mäklare</h2>
       <p className="card_desc">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae,
-        voluptatem! Fugit itaque sapiente vel ipsum?
+        Vi är här för att guida dig rätt och säkerställa att du får den bästa
+        affären möjligt.
       </p>
       <div className="card_container">
         <CardMäklare
@@ -51,7 +51,7 @@ const GetInTouch: React.FC = () => {
           mail="m.bjork@lg.se"
         />
         <CardMäklare
-          name="Anders eriksson"
+          name="Anders Eriksson"
           mobile="070897654"
           address="Karlatornet Skylevel 2"
           mail="a.eriksson@lg.se"
