@@ -10,7 +10,7 @@ interface QuestionCardProps {
 
 const AnyQuestions: React.FC<QuestionCardProps> = () => {
   return (
-    <div className="q_container">
+    <div className="q_container card">
       <h2>Har du frågor?</h2>
       <div className="q_text_container">
         <p>
