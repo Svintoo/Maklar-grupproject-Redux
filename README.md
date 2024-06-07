@@ -7,6 +7,8 @@ recensionen i firebase tas bort, tack ock lov var lösningen enkel men det var e
 att få bukt med.
 
 INSTRUKTIONER:
+För att starta projektet använd "npm run dev" 
+
 1. Testa att scrolla ner på sidan tills du ser "Recensioner", här kan du skriva en kommentar eller spola igenom de redan skrivna kommentarerna på hemsidan.
 2. Prova att logga in med uppgifterna, komponenten kommer nu att ha en knapp "Edit" där du kan trycka för att redigera den kommentar du valt, eller helt enkelt bara ta bort den från databasen. 
 
@@ -15,3 +17,5 @@ Jag skapar här ett konto för dig, och med all respekt måste jag be dig att in
 INLOGG: 
 email: test@test.test
 password: namnet på kursen med stor bokstav i början och inget mellanrum
+
+
