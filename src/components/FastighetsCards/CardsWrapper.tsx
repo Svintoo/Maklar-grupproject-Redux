@@ -18,7 +18,7 @@ function CardsWrapper({ children }: CardsWrapperProps) {
     <>
       <section className="cards-wrapper container">
         {React.Children.toArray(children).slice(0, visibleCards)}
-        <div className="cards-wrapper-btn">
+        <div className="cards-wrapper-btn aligned">
           {React.Children.count(children) > visibleCards && (
             <BtnMedIcon
               icon={<MdExpandMore />}

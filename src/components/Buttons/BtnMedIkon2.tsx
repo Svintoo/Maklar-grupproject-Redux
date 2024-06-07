@@ -1,0 +1,19 @@
+import "./Button.css";
+interface BtnMedIconProps {
+  onClick?: () => void;
+  icon?: React.ReactNode;
+  type?: string;
+  className?: string;
+  title: string;
+}
+
+const BtnMedIcon: React.FC<BtnMedIconProps> = ({ icon, title, className, onClick }) => {
+  return (
+    <button onClick={onClick} className={className}>
+      <span className="icon">{icon}</span>
+      <span>{title}</span>
+    </button>
+  );
+};
+
+export default BtnMedIcon;

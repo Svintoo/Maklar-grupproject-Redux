@@ -31,13 +31,4 @@ document.addEventListener("DOMContentLoaded", function (_event) {
   }
 });
 
-// const root = createRoot(document.getElementById("root")!);
-// root.render(
-//   <React.StrictMode>
-//     <AuthProvider>
-//       <App />
-//     </AuthProvider>
-//   </React.StrictMode>
-// );
-
 export { db, storage, auth };

@@ -8,6 +8,7 @@ import Footer from "./components/Footer/Footer";
 import Hero from "./components/Hero/Hero";
 import SearchFilter from "./components/SearchFilter/SearchFilter";
 import UserView from "./components/UserView/UserView";
+import Reviews from "./components/Reviews/Reviews";
 
 function App() {
   const [filterOptions, setFilterOptions] = useState({
@@ -31,7 +32,9 @@ function App() {
       <FastighetsCard filterOptions={filterOptions} />
 
       {!isLogged && <UserView />}
-
+      <div className="aligned">
+      {isLogged &&<Reviews></Reviews>}
+      </div>
       <Footer />
     </>
   );
